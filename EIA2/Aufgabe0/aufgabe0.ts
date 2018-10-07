@@ -7,7 +7,7 @@ namespace aufgabe0 {
         node.innerHTML += "Yo ";
         node.innerHTML += i;
         node.innerHTML += ", Was geht ab.";
-        console.log("Yo ",i,", Was Geht ab.");
+        console.log("Yo ",i,", Was Gehht ab.");
         }
 
     
