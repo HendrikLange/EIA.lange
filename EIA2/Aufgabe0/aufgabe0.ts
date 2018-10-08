@@ -1,5 +1,4 @@
-namespace aufgabe0 {
-    var i : string ="";
+
         
     function main() {
         var i = prompt("Wie lautet dein Name?");
@@ -12,4 +11,4 @@ namespace aufgabe0 {
 
     
     document.addEventListener('DOMContentLoaded',main);
-    }
+    
