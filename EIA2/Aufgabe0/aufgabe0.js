@@ -1,13 +1,10 @@
-var aufgabe0;
-(function (aufgabe0) {
-    function main() {
-        var i = prompt("Wie heisst du?");
-        var node = document.getElementById("body");
-        node.innerHTML += "Yo ";
-        node.innerHTML += i;
-        node.innerHTML += ", Was geht ab.";
-        console.log("Yo ", i, ", Was Geht ab.");
-    }
-    document.addEventListener('DOMContentLoaded', main);
-})(aufgabe0 || (aufgabe0 = {}));
+function main() {
+    var i = prompt("Wie lautet dein Name?");
+    var node = document.getElementById("body");
+    node.innerHTML += "Yo ";
+    node.innerHTML += i;
+    node.innerHTML += ", was geht ab.";
+    console.log("Yo ", i, ", as Geht ab.");
+}
+document.addEventListener('DOMContentLoaded', main);
 //# sourceMappingURL=aufgabe0.js.map
