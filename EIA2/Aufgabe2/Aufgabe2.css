@@ -73,8 +73,13 @@
 	
 	position:fixed;
 	background-color:#477148;
-	display:inline-block;
+	display:block;
 	margin: 100px 50px 50px 50px;
+	float:left;
+	width:100px;
+	height:150px;
+	border:thin solid black;
+	text-align:center;
 	
 	
 }

@@ -75,6 +75,8 @@ let deck: number[][] = [];
         div_board.appendChild(div_stack);
         div_hand.classList.add("div_hand");
         div_stack.classList.add("div_stack");
+        div_stack.setAttribute("id", "Stapel")
+        document.getElementById("Ablage").innerHTML += "Ablage";
 
         let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         let content: string;
