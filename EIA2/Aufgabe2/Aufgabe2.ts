@@ -5,7 +5,7 @@
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
-
+//Stapel fehlen noch werden nachgereicht!
 namespace Uno {
 let deck: number[][] = [];
     let hand: number[][] = [];
@@ -69,12 +69,10 @@ let deck: number[][] = [];
         }
         let div_board: HTMLDivElement = document.createElement("div");
         let div_hand: HTMLDivElement = document.createElement("div");
-        let div_stack: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div_board);
         div_board.appendChild(div_hand);
-        div_board.appendChild(div_stack);
         div_hand.classList.add("div_hand");
-        div_stack.classList.add("div_stack");
+        
 
         let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         let content: string;

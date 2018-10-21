@@ -4,6 +4,7 @@
 //Datum: 21.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
+//Stapel fehlen noch werden nachgereicht!
 var Uno;
 (function (Uno) {
     var deck = [];
@@ -60,12 +61,9 @@ var Uno;
         }
         var div_board = document.createElement("div");
         var div_hand = document.createElement("div");
-        var div_stack = document.createElement("div");
         document.body.appendChild(div_board);
         div_board.appendChild(div_hand);
-        div_board.appendChild(div_stack);
         div_hand.classList.add("div_hand");
-        div_stack.classList.add("div_stack");
         var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         var content;
         for (var i = 0; i < cards; i++) {
