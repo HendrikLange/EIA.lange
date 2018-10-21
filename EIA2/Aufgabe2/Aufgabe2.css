@@ -71,9 +71,10 @@
 }
 
 .div_stack{
-	position:absolute;
+	position:relative;
+	right:20px;
 	background-color:#purple;
-	display:inline-block;
+	display:block;
 	margin: 400px 50px 50px 50px;
 	
 	
