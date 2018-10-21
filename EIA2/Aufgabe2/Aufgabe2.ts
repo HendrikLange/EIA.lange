@@ -70,13 +70,19 @@ let deck: number[][] = [];
         let div_board: HTMLDivElement = document.createElement("div");
         let div_stack: HTMLDivElement = document.createElement("div");
         let div_hand: HTMLDivElement = document.createElement("div");
+        let div_ablage: HTMLDivElement = document.createElement("div");
+
         document.body.appendChild(div_board);
         div_board.appendChild(div_hand);
         div_board.appendChild(div_stack);
+        div_board.appendChild(div_ablage);
         div_hand.classList.add("div_hand");
         div_stack.classList.add("div_stack");
-        div_stack.setAttribute("id", "Stapel")
+        div_ablage.classList.add("div_ablage");
+        div_stack.setAttribute("id", "Stapel");
+        div_ablage.setAttribute("id", "ablage");
         document.getElementById("Stapel").innerHTML += "Stapel";
+        document.getElementById("ablage").innerHTML += "Ablage";
 
         let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         let content: string;

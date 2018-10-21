@@ -66,6 +66,9 @@
 	background-color:#477148;
 	display:inline-block;
 	margin: 500px 50px 50px 50px;
+	border:solid black 5px;
+	bottom:0;
+		border-radius:11px;
 	
 	
 }
@@ -80,6 +83,23 @@
 	height:150px;
 	border:thin solid black;
 	text-align:center;
+		border-radius:11px;
+	
+	
+}
+
+.div_ablage{
+	
+	position:fixed;
+	background-color:purple;
+	display:block;
+	margin: 100px 50px 50px 750px;
+	float:left;
+	width:100px;
+	height:150px;
+	border:thin solid black;
+	text-align:center;
+	border-radius:11px;
 	
 	
 }

@@ -62,13 +62,18 @@ var Uno;
         var div_board = document.createElement("div");
         var div_stack = document.createElement("div");
         var div_hand = document.createElement("div");
+        var div_ablage = document.createElement("div");
         document.body.appendChild(div_board);
         div_board.appendChild(div_hand);
         div_board.appendChild(div_stack);
+        div_board.appendChild(div_ablage);
         div_hand.classList.add("div_hand");
         div_stack.classList.add("div_stack");
+        div_ablage.classList.add("div_ablage");
         div_stack.setAttribute("id", "Stapel");
+        div_ablage.setAttribute("id", "ablage");
         document.getElementById("Stapel").innerHTML += "Stapel";
+        document.getElementById("ablage").innerHTML += "Ablage";
         var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         var content;
         for (var i = 0; i < cards; i++) {
