@@ -60,9 +60,12 @@ var Uno;
         }
         var div_board = document.createElement("div");
         var div_hand = document.createElement("div");
+        var div_stack = document.createElement("div");
         document.body.appendChild(div_board);
         div_board.appendChild(div_hand);
+        div_board.appendChild(div_stack);
         div_hand.classList.add("div_hand");
+        div_hand.classList.add("div_stack");
         var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         var content;
         for (var i = 0; i < cards; i++) {

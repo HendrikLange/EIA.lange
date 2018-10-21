@@ -69,9 +69,12 @@ let deck: number[][] = [];
         }
         let div_board: HTMLDivElement = document.createElement("div");
         let div_hand: HTMLDivElement = document.createElement("div");
+        let div_stack: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div_board);
         div_board.appendChild(div_hand);
+        div_board.appendChild(div_stack);
         div_hand.classList.add("div_hand");
+        div_hand.classList.add("div_stack");
 
         let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
         let content: string;
