@@ -71,7 +71,7 @@
 }
 
 .div_stack{
-	position:fixed;
+	position:absolute;
 	background-color:#purple;
 	display:inline-block;
 	margin: 400px 50px 50px 50px;
