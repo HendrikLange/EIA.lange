@@ -69,7 +69,15 @@
 	
 	
 }
-
+.div_stack{
+	
+	position:fixed;
+	background-color:#477148;
+	display:inline-block;
+	margin: 100px 50px 50px 50px;
+	
+	
+}
 
 
 
