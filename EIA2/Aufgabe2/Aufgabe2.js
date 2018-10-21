@@ -4,6 +4,7 @@
 //Datum: 21.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
+//Stapel fehlen noch werden nachgereicht!
 var Uno;
 (function (Uno) {
     var deck = [];
