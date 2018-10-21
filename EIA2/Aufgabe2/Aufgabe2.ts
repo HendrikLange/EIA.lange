@@ -158,7 +158,7 @@ let deck: number[][] = [];
 
                 case 11:
                     div.classList.add("direction")
-                    div.innerHTML = "<- ->";
+                    div.innerHTML = "<- ->"; 
                     break; 
  
                 case 12:
