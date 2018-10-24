@@ -6,7 +6,7 @@
 //Er wurde nicht kopiert und auch nicht diktiert.
 var Uno;
 (function (Uno) {
-    var deck = [];
+    var deck = []; //
     var hand = [];
     var num = 0;
     function Deck() {

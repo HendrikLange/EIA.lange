@@ -7,7 +7,7 @@
 
 
 namespace Uno {
-let deck: number[][] = [];
+    let deck: number[][] = [];               //
     let hand: number[][] = [];
     let num: number = 0;
 
