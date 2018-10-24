@@ -5,7 +5,7 @@
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
-//Stapel fehlen noch werden nachgereicht!
+
 namespace Uno {
 let deck: number[][] = [];
     let hand: number[][] = [];
@@ -23,34 +23,14 @@ let deck: number[][] = [];
                 case 1:
                 case 2:
                 case 3:
-                    for (let value: number = 0; value < 13; value++) {
-                        switch (value) {
-                            case 0:
-                                deck[num] = [color, value];
-                                num++;
-                                break;
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                            case 8:
-                            case 9:
-                            case 10:
-                            case 11:
-                            case 12:
-                                for (let i: number = 0; i < 2; i++) {
-                                    deck[num] = [color, value];
-                                    num++;
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    break;
+               for (let value: number = 0; value < 13; value++) {
+                     for (let i: number = 0; i < 2; i++) {
+                     deck[num] = [color, value];
+                     num++;
+                      if (value == 0)
+                         break;
+                 }
+}                  
                 case 4:
                     for (let value: number = 13; value < 15; value++) {
                         for (let i: number = 0; i < 4; i++) {
@@ -90,7 +70,7 @@ let deck: number[][] = [];
             let div: HTMLDivElement = document.createElement("div");
             div_hand.appendChild(div);
             let a: number = generateRandom(0, deck.length);
-            console.log(a);
+           
             let t: number = (deck[a][1]);
             let c: number = (deck[a][0]);
             
@@ -190,17 +170,12 @@ let deck: number[][] = [];
 
         }
     }
-
-    //generateRandom(0,deck.length)
+ 
     function generateRandom(min: number, max: number) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
-
-    
-
-
 
     console.log(deck);
 

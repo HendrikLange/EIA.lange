@@ -4,7 +4,6 @@
 //Datum: 21.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
-//Stapel fehlen noch werden nachgereicht!
 var Uno;
 (function (Uno) {
     var deck = [];
@@ -20,33 +19,13 @@ var Uno;
                 case 2:
                 case 3:
                     for (var value = 0; value < 13; value++) {
-                        switch (value) {
-                            case 0:
-                                deck[num] = [color, value];
-                                num++;
-                                break;
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                            case 8:
-                            case 9:
-                            case 10:
-                            case 11:
-                            case 12:
-                                for (var i = 0; i < 2; i++) {
-                                    deck[num] = [color, value];
-                                    num++;
-                                }
-                                break;
-                            default:
+                        for (var i = 0; i < 2; i++) {
+                            deck[num] = [color, value];
+                            num++;
+                            if (value == 0)
                                 break;
                         }
                     }
-                    break;
                 case 4:
                     for (var value = 13; value < 15; value++) {
                         for (var i = 0; i < 4; i++) {
@@ -80,7 +59,6 @@ var Uno;
             var div = document.createElement("div");
             div_hand.appendChild(div);
             var a = generateRandom(0, deck.length);
-            console.log(a);
             var t = (deck[a][1]);
             var c = (deck[a][0]);
             switch (c) {
@@ -164,7 +142,6 @@ var Uno;
             }
         }
     }
-    //generateRandom(0,deck.length)
     function generateRandom(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
