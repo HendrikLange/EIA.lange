@@ -7,7 +7,6 @@
 var Uno;
 (function (Uno) {
     var deck = []; // [[y][x]]         
-    var hand = [];
     var num = 0; // Globale Variable
     function Deck() {
         // Zahlen (0 - 9); Aussetzen (10); Richtungswechsel (11); 2-Ziehen (12); 4-Ziehen (13); Farbwahl (14);

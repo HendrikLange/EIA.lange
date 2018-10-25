@@ -8,7 +8,6 @@
 
 namespace Uno {
     let deck: number[][] = [];      // [[y][x]]         
-    let hand: number[][] = [];
     let num: number = 0;            // Globale Variable
 
 
@@ -27,7 +26,7 @@ namespace Uno {
                      for (let i: number = 0; i < 2; i++) {
                      deck[num] = [color, value];
                      num++;
-                      if (value == 0)// nur eine 0 vier mal
+                      if (value == 0) // nur eine 0 vier mal
                          break;
                  }
 }                  
