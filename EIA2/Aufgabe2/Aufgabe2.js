@@ -1,20 +1,20 @@
 // Aufgabe: Aufgabe 2
 //Name: Hendrik Lange
 //Matrikel: 259227
-//Datum: 21.10.2018
+//Datum: 25.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 var Uno;
 (function (Uno) {
-    var deck = []; //
+    var deck = []; // [[y][x]]         
     var hand = [];
-    var num = 0;
+    var num = 0; // Globale Variable
     function Deck() {
         // Zahlen (0 - 9); Aussetzen (10); Richtungswechsel (11); 2-Ziehen (12); 4-Ziehen (13); Farbwahl (14);
         // blau (0); gelb (1); gr�n (2); rot (3); schwarz (4);
         for (var color = 0; color < 5; color++) {
             switch (color) {
-                case 0:
+                case 0: //f�r case 0 - 3 wird case 3 ausgef�hrt 
                 case 1:
                 case 2:
                 case 3:
@@ -29,7 +29,7 @@ var Uno;
                 case 4:
                     for (var value = 13; value < 15; value++) {
                         for (var i = 0; i < 4; i++) {
-                            deck[num] = [color, value];
+                            deck[num] = [color, value]; // +4er und farbwechsel
                             num++;
                         }
                     }
@@ -53,32 +53,32 @@ var Uno;
         div_ablage.setAttribute("id", "ablage");
         document.getElementById("Stack").innerHTML += "Stapel";
         document.getElementById("ablage").innerHTML += "Ablage";
-        var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
+        var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 f�r dezimalzahl parseint string in ganzzahl parseint methode
         var content;
         for (var i = 0; i < cards; i++) {
             var div = document.createElement("div");
             div_hand.appendChild(div);
             var a = generateRandom(0, deck.length);
-            var t = (deck[a][1]);
-            var c = (deck[a][0]);
+            var v = (deck[a][1]); // Kartenvalues werden im Array gespeichert
+            var c = (deck[a][0]); // Kartenfarbe werden im Array gespeichert
             switch (c) {
                 case 0:
-                    div.classList.add("blue", "card");
+                    div.classList.add("blue");
                     break;
                 case 1:
-                    div.classList.add("yellow", "card");
+                    div.classList.add("yellow");
                     break;
                 case 2:
-                    div.classList.add("green", "card");
+                    div.classList.add("green");
                     break;
                 case 3:
-                    div.classList.add("red", "card");
+                    div.classList.add("red");
                     break;
                 case 4:
-                    div.classList.add("black", "card");
+                    div.classList.add("black");
                     break;
             }
-            switch (t) {
+            switch (v) {
                 case 0:
                     div.classList.add("zero");
                     div.innerHTML = "0";
@@ -143,7 +143,7 @@ var Uno;
         }
     }
     function generateRandom(min, max) {
-        min = Math.ceil(min);
+        min = Math.ceil(min); // rundung
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }

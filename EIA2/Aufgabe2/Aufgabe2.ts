@@ -1,15 +1,15 @@
 // Aufgabe: Aufgabe 2
 //Name: Hendrik Lange
 //Matrikel: 259227
-//Datum: 21.10.2018
+//Datum: 25.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
 
 namespace Uno {
-    let deck: number[][] = [];               //
+    let deck: number[][] = [];      // [[y][x]]         
     let hand: number[][] = [];
-    let num: number = 0;
+    let num: number = 0;            // Globale Variable
 
 
     function Deck() {
@@ -17,9 +17,9 @@ namespace Uno {
         // blau (0); gelb (1); grün (2); rot (3); schwarz (4);
         
         
-        for (let color: number = 0; color < 5; color++) {
+        for (let color: number = 0; color < 5; color++) { // Farben werden durchlaufen
             switch (color) {
-                case 0:
+                case 0:     //für case 0 - 3 wird case 3 ausgeführt 
                 case 1:
                 case 2:
                 case 3:
@@ -27,14 +27,14 @@ namespace Uno {
                      for (let i: number = 0; i < 2; i++) {
                      deck[num] = [color, value];
                      num++;
-                      if (value == 0)
+                      if (value == 0)// nur eine 0 vier mal
                          break;
                  }
 }                  
                 case 4:
                     for (let value: number = 13; value < 15; value++) {
                         for (let i: number = 0; i < 4; i++) {
-                            deck[num] = [color, value];
+                            deck[num] = [color, value]; // +4er und farbwechsel
                             num++;
                         }
                     }
@@ -64,34 +64,34 @@ namespace Uno {
         document.getElementById("Stack").innerHTML += "Stapel";
         document.getElementById("ablage").innerHTML += "Ablage";
 
-        let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10);
+        let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 für dezimalzahl parseint string in ganzzahl parseint methode
         let content: string;
         for (let i: number = 0; i < cards; i++) {
             let div: HTMLDivElement = document.createElement("div");
             div_hand.appendChild(div);
             let a: number = generateRandom(0, deck.length);
            
-            let t: number = (deck[a][1]);
-            let c: number = (deck[a][0]);
+            let v: number = (deck[a][1]); // Kartenvalues werden im Array gespeichert
+            let c: number = (deck[a][0]); // Kartenfarbe werden im Array gespeichert
             
              switch (c) {
                 case 0:
-                    div.classList.add("blue", "card");
+                    div.classList.add("blue");
                     break;
                 case 1:
-                    div.classList.add("yellow", "card");
+                    div.classList.add("yellow");
                     break;
                 case 2:
-                    div.classList.add("green", "card");
+                    div.classList.add("green");
                     break;
                 case 3:
-                    div.classList.add("red", "card");
+                    div.classList.add("red");
                     break;
                 case 4:
-                    div.classList.add("black", "card");
+                    div.classList.add("black");
                     break;
             }
-            switch (t) {
+            switch (v) {
                 case 0:
                     div.classList.add("zero");
                     div.innerHTML = "0";
@@ -171,8 +171,8 @@ namespace Uno {
         }
     }
  
-    function generateRandom(min: number, max: number) {
-        min = Math.ceil(min);
+    function generateRandom(min: number, max: number) {  // 0 und 107
+        min = Math.ceil(min);               // rundung
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
