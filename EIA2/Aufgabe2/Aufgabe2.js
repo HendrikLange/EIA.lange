@@ -1,7 +1,7 @@
 // Aufgabe: Aufgabe 2
 //Name: Hendrik Lange
 //Matrikel: 259227
-//Datum: 25.10.2018
+//Datum: 28.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 var Uno;
@@ -52,101 +52,103 @@ var Uno;
         div_ablage.setAttribute("id", "ablage");
         document.getElementById("Stack").innerHTML += "Stapel";
         document.getElementById("ablage").innerHTML += "Ablage";
-        var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 f�r dezimalzahl parseint string in ganzzahl parseint methode
-        var content;
-        for (var i = 0; i < cards; i++) {
-            var div = document.createElement("div");
-            div_hand.appendChild(div);
-            var a = generateRandom(0, deck.length);
-            var v = (deck[a][1]); // Kartenvalues werden im Array gespeichert
-            var c = (deck[a][0]); // Kartenfarbe werden im Array gespeichert
-            switch (c) {
-                case 0:
-                    div.classList.add("blue");
-                    break;
-                case 1:
-                    div.classList.add("yellow");
-                    break;
-                case 2:
-                    div.classList.add("green");
-                    break;
-                case 3:
-                    div.classList.add("red");
-                    break;
-                case 4:
-                    div.classList.add("black");
-                    break;
-            }
-            switch (v) {
-                case 0:
-                    div.classList.add("zero");
-                    div.innerHTML = "0";
-                    break;
-                case 1:
-                    div.classList.add("one");
-                    div.innerHTML = "1";
-                    break;
-                case 2:
-                    div.classList.add("two");
-                    div.innerHTML = "2";
-                    break;
-                case 3:
-                    div.classList.add("three");
-                    div.innerHTML = "3";
-                    break;
-                case 4:
-                    div.classList.add("four");
-                    div.innerHTML = "4";
-                    break;
-                case 5:
-                    div.classList.add("five");
-                    div.innerHTML = "5";
-                    break;
-                case 6:
-                    div.classList.add("six");
-                    div.innerHTML = "6";
-                    break;
-                case 7:
-                    div.classList.add("seven");
-                    div.innerHTML = "7";
-                    break;
-                case 8:
-                    div.classList.add("eight");
-                    div.innerHTML = "8";
-                    break;
-                case 9:
-                    div.classList.add("nine");
-                    div.innerHTML = "9";
-                    break;
-                case 10:
-                    div.classList.add("skip");
-                    div.innerHTML = "skip";
-                    break;
-                case 11:
-                    div.classList.add("direction");
-                    div.innerHTML = "<- ->";
-                    break;
-                case 12:
-                    div.classList.add("drawtwo");
-                    div.innerHTML = "+2";
-                    break;
-                case 13:
-                    div.classList.add("drawfour");
-                    div.innerHTML = "+4";
-                    break;
-                case 14:
-                    div.classList.add("choose");
-                    div.innerHTML = "choose";
-                    break;
+        function Hand() {
+            var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 f�r Dezimalzahl parseint string in ganzzahl parseint methode
+            var content;
+            for (var i = 0; i < cards; i++) {
+                var div = document.createElement("div");
+                div_hand.appendChild(div);
+                var a = generateRandom(0, deck.length);
+                var v = (deck[a][1]); // Kartenvalues werden im Array gespeichert
+                var c = (deck[a][0]); // Kartenfarbe werden im Array gespeichert
+                switch (c) {
+                    case 0:
+                        div.classList.add("blue");
+                        break;
+                    case 1:
+                        div.classList.add("yellow");
+                        break;
+                    case 2:
+                        div.classList.add("green");
+                        break;
+                    case 3:
+                        div.classList.add("red");
+                        break;
+                    case 4:
+                        div.classList.add("black");
+                        break;
+                }
+                switch (v) {
+                    case 0:
+                        div.classList.add("zero");
+                        div.innerHTML = "0";
+                        break;
+                    case 1:
+                        div.classList.add("one");
+                        div.innerHTML = "1";
+                        break;
+                    case 2:
+                        div.classList.add("two");
+                        div.innerHTML = "2";
+                        break;
+                    case 3:
+                        div.classList.add("three");
+                        div.innerHTML = "3";
+                        break;
+                    case 4:
+                        div.classList.add("four");
+                        div.innerHTML = "4";
+                        break;
+                    case 5:
+                        div.classList.add("five");
+                        div.innerHTML = "5";
+                        break;
+                    case 6:
+                        div.classList.add("six");
+                        div.innerHTML = "6";
+                        break;
+                    case 7:
+                        div.classList.add("seven");
+                        div.innerHTML = "7";
+                        break;
+                    case 8:
+                        div.classList.add("eight");
+                        div.innerHTML = "8";
+                        break;
+                    case 9:
+                        div.classList.add("nine");
+                        div.innerHTML = "9";
+                        break;
+                    case 10:
+                        div.classList.add("skip");
+                        div.innerHTML = "Skip";
+                        break;
+                    case 11:
+                        div.classList.add("direction");
+                        div.innerHTML = "<- ->";
+                        break;
+                    case 12:
+                        div.classList.add("drawtwo");
+                        div.innerHTML = "+2";
+                        break;
+                    case 13:
+                        div.classList.add("drawfour");
+                        div.innerHTML = "+4";
+                        break;
+                    case 14:
+                        div.classList.add("choose");
+                        div.innerHTML = "Choose";
+                        break;
+                }
             }
         }
+        Hand();
     }
     function generateRandom(min, max) {
         min = Math.ceil(min); // rundung
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
-    console.log(deck);
     document.addEventListener('DOMContentLoaded', Deck);
 })(Uno || (Uno = {}));
 //# sourceMappingURL=Aufgabe2.js.map

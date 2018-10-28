@@ -1,7 +1,7 @@
 // Aufgabe: Aufgabe 2
 //Name: Hendrik Lange
 //Matrikel: 259227
-//Datum: 25.10.2018
+//Datum: 28.10.2018
 //Hiermit versichere ich, dass ich diesen Code in Zusammenarbeit mit Jannis Backhaus & Eugen Krasnov erarbeitet habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
@@ -11,7 +11,8 @@ namespace Uno {
     let num: number = 0;            // Globale Variable
 
 
-    function Deck() {
+    function Deck():void {
+        
         // Zahlen (0 - 9); Aussetzen (10); Richtungswechsel (11); 2-Ziehen (12); 4-Ziehen (13); Farbwahl (14);
         // blau (0); gelb (1); grün (2); rot (3); schwarz (4);
         
@@ -43,9 +44,9 @@ namespace Uno {
                     break;
             }
 
-
-
         }
+        
+        
         let div_board: HTMLDivElement = document.createElement("div");
         let div_stack: HTMLDivElement = document.createElement("div");
         let div_hand: HTMLDivElement = document.createElement("div");
@@ -63,7 +64,9 @@ namespace Uno {
         document.getElementById("Stack").innerHTML += "Stapel";
         document.getElementById("ablage").innerHTML += "Ablage";
 
-        let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 für dezimalzahl parseint string in ganzzahl parseint methode
+        
+    function Hand():void{    
+        let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 für Dezimalzahl parseint string in ganzzahl parseint methode
         let content: string;
         for (let i: number = 0; i < cards; i++) {
             let div: HTMLDivElement = document.createElement("div");
@@ -142,7 +145,7 @@ namespace Uno {
 
                 case 10:
                     div.classList.add("skip")
-                    div.innerHTML = "skip";
+                    div.innerHTML = "Skip";
                     break;
 
                 case 11:
@@ -162,12 +165,14 @@ namespace Uno {
 
                 case 14:
                     div.classList.add("choose"); 
-                    div.innerHTML = "choose";
+                    div.innerHTML = "Choose";
                     break;
             }
-
+}
 
         }
+        
+      Hand();  
     }
  
     function generateRandom(min: number, max: number) {  // 0 und 107
@@ -176,7 +181,6 @@ namespace Uno {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    console.log(deck);
-
+   
     document.addEventListener('DOMContentLoaded', Deck);
 }
