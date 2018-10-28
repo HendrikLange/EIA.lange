@@ -19,7 +19,7 @@ namespace Uno {
         
         for (let color: number = 0; color < 5; color++) { // Farben werden durchlaufen
             switch (color) {
-                case 0:     //für case 0 - 3 wird case 3 ausgeführt 
+                case 0:     //Für case 0 - 3 wird case 3 ausgeführt 
                 case 1:
                 case 2:
                 case 3:
@@ -27,7 +27,7 @@ namespace Uno {
                      for (let i: number = 0; i < 2; i++) {
                      deck[num] = [color, value];
                      num++;
-                      if (value == 0) // nur eine 0 vier mal
+                      if (value == 0) // Nur eine 0 vier mal
                          break;
                  }
 }                  
@@ -176,9 +176,9 @@ namespace Uno {
     }
  
     function generateRandom(min: number, max: number) {  // 0 und 107
-        min = Math.ceil(min);               // rundung
+        min = Math.ceil(min);               
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
+        return Math.floor(Math.random() * (max - min)) + min; //Zufallswert wird zurückgeliefert
     }
 
    

@@ -13,7 +13,7 @@ var Uno;
         // blau (0); gelb (1); gr�n (2); rot (3); schwarz (4);
         for (var color = 0; color < 5; color++) {
             switch (color) {
-                case 0: //f�r case 0 - 3 wird case 3 ausgef�hrt 
+                case 0: //F�r case 0 - 3 wird case 3 ausgef�hrt 
                 case 1:
                 case 2:
                 case 3:
@@ -145,9 +145,9 @@ var Uno;
         Hand();
     }
     function generateRandom(min, max) {
-        min = Math.ceil(min); // rundung
+        min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
+        return Math.floor(Math.random() * (max - min)) + min; //Zufallswert wird zur�ckgeliefert
     }
     document.addEventListener('DOMContentLoaded', Deck);
 })(Uno || (Uno = {}));
