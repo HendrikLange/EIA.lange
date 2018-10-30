@@ -31,6 +31,7 @@ namespace Uno {
                          break;
                  }
 }                  
+                    break;
                 case 4:
                     for (let value: number = 13; value < 15; value++) {
                         for (let i: number = 0; i < 4; i++) {
@@ -72,7 +73,7 @@ namespace Uno {
             let div: HTMLDivElement = document.createElement("div");
             div_hand.appendChild(div);
             let a: number = generateRandom(0, deck.length);
-           
+           deck.splice(a,1);
             let v: number = (deck[a][1]); // Kartenvalues werden im Array gespeichert
             let c: number = (deck[a][0]); // Kartenfarbe werden im Array gespeichert
             
@@ -181,6 +182,6 @@ namespace Uno {
         return Math.floor(Math.random() * (max - min)) + min; //Zufallswert wird zurückgeliefert
     }
 
-   
+    console.log(deck);
     document.addEventListener('DOMContentLoaded', Deck);
 }

@@ -25,6 +25,7 @@ var Uno;
                                 break;
                         }
                     }
+                    break;
                 case 4:
                     for (var value = 13; value < 15; value++) {
                         for (var i = 0; i < 4; i++) {
@@ -59,6 +60,7 @@ var Uno;
                 var div = document.createElement("div");
                 div_hand.appendChild(div);
                 var a = generateRandom(0, deck.length);
+                deck.splice(a, 1);
                 var v = (deck[a][1]); // Kartenvalues werden im Array gespeichert
                 var c = (deck[a][0]); // Kartenfarbe werden im Array gespeichert
                 switch (c) {
@@ -149,6 +151,7 @@ var Uno;
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //Zufallswert wird zur�ckgeliefert
     }
+    console.log(deck);
     document.addEventListener('DOMContentLoaded', Deck);
 })(Uno || (Uno = {}));
 //# sourceMappingURL=Aufgabe2.js.map
