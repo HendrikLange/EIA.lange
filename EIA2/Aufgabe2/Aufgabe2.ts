@@ -68,7 +68,6 @@ namespace Uno {
         
     function Hand():void{    
         let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 für Dezimalzahl parseint string in ganzzahl parseint methode
-        let content: string;
         for (let i: number = 0; i < cards; i++) {
             let div: HTMLDivElement = document.createElement("div");
             div_hand.appendChild(div);

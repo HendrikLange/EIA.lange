@@ -55,7 +55,6 @@ var Uno;
         document.getElementById("ablage").innerHTML += "Ablage";
         function Hand() {
             var cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 f�r Dezimalzahl parseint string in ganzzahl parseint methode
-            var content;
             for (var i = 0; i < cards; i++) {
                 var div = document.createElement("div");
                 div_hand.appendChild(div);
