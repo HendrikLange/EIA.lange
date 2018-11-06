@@ -14,15 +14,11 @@ namespace Uno {
     function Deck():void {
         
         // Zahlen (0 - 9); Aussetzen (10); Richtungswechsel (11); 2-Ziehen (12); 4-Ziehen (13); Farbwahl (14);
-        // blau (0); gelb (1); grün (2); rot (3); schwarz (4);
+        // blau (0); gelb (1); grÃ¼n (2); rot (3); schwarz (4);
         
         
         for (let color: number = 0; color < 5; color++) { // Farben werden durchlaufen
-            switch (color) {
-                case 0:     //Für case 0 - 3 wird case 3 ausgeführt 
-                case 1:
-                case 2:
-                case 3:
+         if (color < 5) {
                for (let value: number = 0; value < 13; value++) {
                      for (let i: number = 0; i < 2; i++) {
                      deck[num] = [color, value];
@@ -30,23 +26,17 @@ namespace Uno {
                       if (value == 0) // Nur eine 0 vier mal
                          break;
                  }
-}                  
-                    break;
-                case 4:
-                    for (let value: number = 13; value < 15; value++) {
-                        for (let i: number = 0; i < 4; i++) {
-                            deck[num] = [color, value]; // +4er und farbwechsel
-                            num++;
-                        }
-                    }
-                    break;
-
-                default:
-                    break;
+               }
+         }
+         else
+          {  
+            for (let value: number = 13; value < 15; value++) {
+                for (let i: number = 0; i < 4; i++) {
+                    deck[num] = [color, value]; // +4er und farbwechsel
+                    num++;
+                }
             }
-
         }
-        
         
         let div_board: HTMLDivElement = document.createElement("div");
         let div_stack: HTMLDivElement = document.createElement("div");
@@ -65,9 +55,9 @@ namespace Uno {
         document.getElementById("Stack").innerHTML += "Stapel";
         document.getElementById("ablage").innerHTML += "Ablage";
 
-        
+        // keine Funktionen innerhalb von Funktionen definieren!
     function Hand():void{    
-        let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 für Dezimalzahl parseint string in ganzzahl parseint methode
+        let cards = parseInt(prompt("Wie viele Karten willst du ziehen?"), 10); // 10 fÃ¼r Dezimalzahl parseint string in ganzzahl parseint methode
         for (let i: number = 0; i < cards; i++) {
             let div: HTMLDivElement = document.createElement("div");
             div_hand.appendChild(div);
@@ -94,6 +84,12 @@ namespace Uno {
                     break;
             }
             switch (v) {
+                Alternative mit zwei Arrays
+                    class ["zero", "one", "two" ... "choose"]
+                    text ["0", "1", "2" ... "Choose"]
+                    div.classList.add(class[v]);
+                    div.innerHTML = text[v];
+                    
                 case 0:
                     div.classList.add("zero");
                     div.innerHTML = "0";
@@ -178,7 +174,7 @@ namespace Uno {
     function generateRandom(min: number, max: number) {  // 0 und 107
         min = Math.ceil(min);               
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; //Zufallswert wird zurückgeliefert
+        return Math.floor(Math.random() * (max - min)) + min; //Zufallswert wird zurÃ¼ckgeliefert
     }
 
     console.log(deck);
