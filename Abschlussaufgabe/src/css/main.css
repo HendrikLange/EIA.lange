@@ -1,0 +1,57 @@
+#fixed-controls {
+  bottom: 0; }
+
+.modal-overlay {
+  top: 30;
+  bottom: 0;
+ }
+
+  .background-image{
+
+    background-image: url("https://image.shutterstock.com/image-photo/set-ice-cream-scoops-different-260nw-599397020.jpg");
+   background-size: 60%;
+   background-position-x: 50%;
+   background-position-y: 20%;
+   }
+
+.cart-overlay {
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  left: 100% !important;
+  height: 100% !important;
+   }
+  .cart-overlay.active {
+    left: 0 !important; }
+
+
+.page-title {
+  z-index: 200; }
+
+.modal-overlay {
+  z-index: 500; }
+
+.border-thick {
+  border-width: 3px !important; }
+
+.display-4 {
+  letter-spacing: 3px;
+  font-style: oblique; }
+  .display-4 .de {
+    font-size: 1.8rem; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
+.cart-link {
+  cursor: pointer; }
+  .cart-link .cart-image {
+    height: 2.5rem;
+    width: auto; }
+
+.overflow-scroll {
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.cart-overlay .items-wrapper {
+  max-height: 16rem; }
