@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<script src="Draw.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Object.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="Snow.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Ball.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="Client/DatabaseClient.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="Aufgabe12.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Trees.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Move.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Birds.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Vector.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Food.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="Aufgabe12.css">
+
+
+
+
+
+	<title>Rodelhang</title>
+</head>
+
+<body oncontextmenu="return false"></body>
+<audio controls autoplay hidden="true">
+	<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div>
+	<h1>Rodelhang Terminator</h1>
+
+	<button  id="Start">START</button>
+	<button id="buttonHighscore">Highscores</button>
+	 
+
+</div>
+
+<canvas class="invisible" width=500 height=700></canvas>
+<section class="invisible">
+	<div class="invisible"></div>
+	<div>
+
+		<button onClick="window.location.reload()" id="Restart">RESTART</button>
+		<div id="end">
+
+		</div>
+
+	</div>
+		<form>
+			<p>Spielername</p>
+			<fieldset>
+
+				<input name="text" id="textInput"></input>
+				<button type="button" id="submitButton">Absenden</button>
+			</fieldset>
+
+			
+			<p id="scores">Highscore 	</p>
+		</form>
+
+
+
+
+
+
+
+</section>
+</body>
+
+</html>
