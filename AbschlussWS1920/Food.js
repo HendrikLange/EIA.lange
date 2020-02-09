@@ -30,26 +30,31 @@ var Rodelhang;
                 this.size -= 0.03;
         }
         baitBirds() {
-            for (let bird of Rodelhang.moveingObjects) {
-                this.baitedBirds.push(bird);
-                console.log("test");
+            this.target = new Rodelhang.Vector(this.position.x, this.position.y);
+            for (let bird of Rodelhang.birdArray) {
+                this.baitMinX = this.target.x - 150;
+                this.baitMaxX = this.target.x + 150;
+                this.baitMinY = this.target.y - 150;
+                this.baitMaxY = this.target.y + 150;
+                if ((this.baitMinX < bird.position.x && bird.position.x < this.baitMaxX) && (this.baitMinY < bird.position.y && bird.position.y < this.baitMaxY)) {
+                    this.baitedBirds.push(bird);
+                }
             }
             for (let bird of this.baitedBirds) {
-                this.target = new Rodelhang.Vector(this.position.x, this.position.y);
                 console.log("foodpos" + this.target);
                 bird.velocity = Rodelhang.Vector.getDifference(this.target, bird.position);
                 bird.velocity.scale(0.01 + Math.random() * 0.01);
-                this.minX = this.target.x - 10;
-                this.maxX = this.target.x + 10;
-                this.minY = this.target.y - 10;
-                this.maxY = this.target.y + 10;
+                this.stopMinX = this.target.x - 10;
+                this.stopMaxX = this.target.x + 10;
+                this.stopMinY = this.target.y - 10;
+                this.stopMaxY = this.target.y + 10;
                 bird.isBaited = true;
             }
             console.log(this.baitedBirds);
         }
         check() {
             for (let bird of this.baitedBirds) {
-                if ((this.minX < bird.position.x && bird.position.x < this.maxX) && (this.minY < bird.position.y && bird.position.y < this.maxY)) {
+                if ((this.stopMinX < bird.position.x && bird.position.x < this.stopMaxX) && (this.stopMinY < bird.position.y && bird.position.y < this.stopMaxY)) {
                     bird.velocity.x = 0;
                     bird.velocity.y = 0;
                     setTimeout(function () {

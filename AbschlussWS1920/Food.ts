@@ -1,5 +1,3 @@
-
-
 namespace Rodelhang {
 
     export class Food {
@@ -7,10 +5,18 @@ namespace Rodelhang {
         size: number;
         baitedBirds: Bird[] = [];
         target: Vector;
-        minX: number;
-        maxX: number;
-        minY: number;
-        maxY: number;
+        stopMinX: number; // Nähe Keks dann Stop am Keks
+        stopMaxX: number;
+        stopMinY: number;
+        stopMaxY: number;
+
+
+        baitMinX: number; // Keks Effekt Radius
+        baitMaxX: number;
+        baitMinY: number;
+        baitMaxY: number;
+
+
 
         constructor(_position: Vector, _size: number) {
             this.position = _position;
@@ -35,8 +41,6 @@ namespace Rodelhang {
         }
         becomeSmaller(): void {
 
-
-
             if (this.size <= 0.05) {
 
 
@@ -52,22 +56,32 @@ namespace Rodelhang {
 
         }
         baitBirds(): void {
+            this.target = new Vector(this.position.x, this.position.y);
+            for (let bird of birdArray) {
+               
+                this.baitMinX = this.target.x - 150;
+                this.baitMaxX = this.target.x + 150;
+                this.baitMinY = this.target.y - 150;
+                this.baitMaxY = this.target.y + 150; 
+                
+                if ((this.baitMinX < bird.position.x && bird.position.x < this.baitMaxX) && (this.baitMinY < bird.position.y && bird.position.y < this.baitMaxY))
+                    {
+                        this.baitedBirds.push(bird);
 
-            for (let bird of moveingObjects) {
-                this.baitedBirds.push(bird);
-                console.log("test");
+
+                    }
             }
 
             for (let bird of this.baitedBirds) {
 
-                this.target = new Vector(this.position.x, this.position.y);
+               
                 console.log("foodpos" + this.target);
                 bird.velocity = Vector.getDifference(this.target, bird.position);
                 bird.velocity.scale(0.01 + Math.random() * 0.01);
-                this.minX = this.target.x - 10;
-                this.maxX = this.target.x + 10;
-                this.minY = this.target.y - 10;
-                this.maxY = this.target.y + 10;
+                this.stopMinX = this.target.x - 10;
+                this.stopMaxX = this.target.x + 10;
+                this.stopMinY = this.target.y - 10;
+                this.stopMaxY = this.target.y + 10;
                 bird.isBaited = true;
 
             }
@@ -76,12 +90,14 @@ namespace Rodelhang {
         }
         check(): void {
             for (let bird of this.baitedBirds) {
-                if ((this.minX < bird.position.x && bird.position.x < this.maxX) && (this.minY < bird.position.y && bird.position.y < this.maxY)) {
+                if ((this.stopMinX < bird.position.x && bird.position.x < this.stopMaxX) && (this.stopMinY < bird.position.y && bird.position.y < this.stopMaxY)) {
                     bird.velocity.x = 0;
                     bird.velocity.y = 0;
                     setTimeout(function () {
                         foodArray = [];
-                        bird.setVelocity();
+                        
+                        
+                        bird.setVelocity(); 
                     }, 3000);
 
                 }

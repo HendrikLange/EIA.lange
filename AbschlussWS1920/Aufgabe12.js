@@ -3,16 +3,13 @@ var Rodelhang;
     window.addEventListener("load", init);
     Rodelhang.canvas = document.getElementsByTagName("canvas")[0];
     let objects = [];
-    Rodelhang.moveingObjects = [];
+    Rodelhang.birdArray = [];
     Rodelhang.foodArray = [];
+    Rodelhang.snowArray = [];
     let imagedata;
     let fps = 25;
-    let i = 0;
-    let xMouse;
-    let yMouse;
     let snowball;
     Rodelhang.score = 0;
-    let throwFood;
     var x = document.getElementById("myAudio");
     var audio1 = new Audio('bam.mp3');
     var audio2 = new Audio('monster.mp3');
@@ -43,9 +40,9 @@ var Rodelhang;
     }
     function listeners() {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
-        document.getElementById("Start").addEventListener("click", timer);
+        //  document.getElementById("Start").addEventListener("click", timer);
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
-        document.getElementById("Restart").addEventListener("click", timer);
+        //    document.getElementById("Restart").addEventListener("click", timer);
         document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
         document.getElementById("submitButton").addEventListener("click", test);
         document.addEventListener("contextmenu", rightClick);
@@ -67,7 +64,8 @@ var Rodelhang;
         drawSun();
         console.log(Rodelhang.name);
         drawCloud();
-        generateSnow();
+        // generateSnow();
+        drawSnow();
         drawTrees();
         drawSnowman();
         drawBirdhouse();
@@ -100,7 +98,8 @@ var Rodelhang;
             object.draw();
             object.move();
         }
-        for (let moveable of Rodelhang.moveingObjects) {
+        restockBirds();
+        for (let moveable of Rodelhang.birdArray) {
             moveable.move();
             moveable.draw();
         }
@@ -108,6 +107,10 @@ var Rodelhang;
             foodable.draw();
             foodable.becomeSmaller();
             foodable.check();
+        }
+        for (let snowy of Rodelhang.snowArray) {
+            snowy.draw();
+            snowy.move();
         }
         if (snowball) {
             snowball.draw();
@@ -121,9 +124,10 @@ var Rodelhang;
         snowball = new Rodelhang.Snowball(6, snowballVector);
         window.setTimeout(getBirdHit, 600, snowballVector);
     }
-    function breakBird(_bird) {
-        let index = Rodelhang.moveingObjects.indexOf(_bird);
-        Rodelhang.moveingObjects.splice(index, 1);
+    function killBird(_bird) {
+        let index = Rodelhang.birdArray.indexOf(_bird);
+        Rodelhang.birdArray.splice(index, 1);
+        console.log("Anzahl Vögel" + Rodelhang.birdArray.length);
         Rodelhang.score = Rodelhang.score + 10;
         var random = 10 * Math.random();
         console.log(random);
@@ -134,25 +138,39 @@ var Rodelhang;
             audio2.play();
         }
     }
-    function getBirdHit(_hotspot) {
-        for (let bird of Rodelhang.moveingObjects) {
-            if (bird.isHit(_hotspot)) {
-                breakBird(bird);
+    function getBirdHit(_aim) {
+        for (let bird of Rodelhang.birdArray) {
+            if (bird.isHit(_aim)) {
+                killBird(bird);
             }
         }
     }
     //Schnee
-    function generateSnow() {
-        for (let i = 0; i < 70; i++) {
+    /*     function generateSnow(): void {
+            for (let i: number = 0; i < 70; i++) {
+    
+                let snowflake: Snow = new Snow();
+                objects.push(snowflake);
+            }
+        } */
+    function drawSnow() {
+        let nFlakes = 20;
+        for (let i = 0; i < nFlakes; i++) {
             let snowflake = new Rodelhang.Snow();
-            objects.push(snowflake);
+            Rodelhang.snowArray.push(snowflake);
         }
     }
     function drawBird() {
         let nBirds = 20;
         for (let i = 0; i < nBirds; i++) {
             let bird = new Rodelhang.Bird();
-            Rodelhang.moveingObjects.push(bird);
+            Rodelhang.birdArray.push(bird);
+        }
+    }
+    function restockBirds() {
+        if (Rodelhang.birdArray.length < 10) {
+            let bird = new Rodelhang.Bird();
+            Rodelhang.birdArray.push(bird);
         }
     }
     function rightClick(_event) {

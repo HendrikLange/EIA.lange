@@ -13,6 +13,7 @@ var Rodelhang;
             Rodelhang.crc2.arc(0, 0, this.radius * 4, 0, 10 * Math.PI);
             Rodelhang.crc2.fillStyle = "white";
             Rodelhang.crc2.strokeStyle = "grey";
+            Rodelhang.crc2.lineWidth = 1;
             Rodelhang.crc2.fill();
             Rodelhang.crc2.stroke();
             Rodelhang.crc2.restore();

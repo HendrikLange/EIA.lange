@@ -7,8 +7,9 @@ var Rodelhang;
             this.setVelocity();
         }
         setVelocity() {
-            let xBird = (5 * Math.random()) + 2;
-            this.velocity = new Rodelhang.Vector(xBird, 0);
+            let xBird = (8 * Math.random()) + 2;
+            let yBird = Math.random() * -5;
+            this.velocity = new Rodelhang.Vector(xBird, yBird);
         }
         isHit(_hotspot) {
             let hitsize = 5 * this.size;

@@ -6,7 +6,6 @@ namespace Rodelhang {
         radius: number;
         
 
-
         constructor(_size: number, _position: Vector) {
 
 
@@ -24,12 +23,11 @@ namespace Rodelhang {
             crc2.arc(0, 0, this.radius * 4, 0, 10 * Math.PI);
             crc2.fillStyle = "white";
             crc2.strokeStyle = "grey";
+            crc2.lineWidth = 1;
             crc2.fill();
             crc2.stroke();
             crc2.restore();
             crc2.closePath();
-
-
 
         }
 

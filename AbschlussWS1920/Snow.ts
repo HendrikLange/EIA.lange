@@ -1,44 +1,60 @@
 namespace Rodelhang {
 
-    export class Snow extends Draw {
-        xD: number;
-        yD: number;
+    export class Snow {
+
+        gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, 5);
+        position: Vector;
+        velocity: Vector;
+        size: number;
 
         constructor() {
-            super();
-            this.xP = Math.random() * 1400;
-            this.yP = Math.random() * 700;
+
+            this.position = new Vector(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height);
+
+            this.velocity = new Vector(0, Math.random() + 1 * 5);
+
+
         }
 
         move(): void {
-            this.yD = 4;
-            this.xD = Math.random() * 0;
 
-            this.xP += this.xD;
-            this.yP += this.yD;
+            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
 
-            if (this.yP > 600) {
-                this.yP = 0;
-            }
+            this.position.add(offset);
 
+            if (this.position.y > crc2.canvas.height)
+                this.position.y -= crc2.canvas.height;
+            if (this.position.x > crc2.canvas.width)
+                this.position.x -= crc2.canvas.width;
+
+            if (this.position.y < 0)
+                this.position.y += crc2.canvas.height;
+            if (this.position.x < 0)
+                this.position.x += crc2.canvas.width;
         }
+
+
 
         draw(): void {
-            crc2.fillStyle = this.color;
-
-            crc2.fillStyle = "white";
-            crc2.strokeStyle = "grey";
-            crc2.lineWidth = 1;
 
             crc2.beginPath();
-            crc2.moveTo(this.xP - 2, this.yP + 1);
-            crc2.lineTo(this.xP, this.yP - 2);
-            crc2.lineTo(this.xP + 3, this.yP + 3);
-            crc2.closePath();
-
-            crc2.fill();
+            crc2.save();
+            crc2.translate(this.position.x, this.position.y);
+            crc2.fillStyle = this.gradient;
+            crc2.arc(0, 0, 2, 0, 2 * Math.PI);
+            crc2.fillStyle = "white";
+            crc2.strokeStyle = "lightgrey";
             crc2.stroke();
+            crc2.fill();
+
+            crc2.restore();
+
+
         }
     }
+
+
+
+
 
 }

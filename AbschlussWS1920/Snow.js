@@ -1,32 +1,34 @@
 var Rodelhang;
 (function (Rodelhang) {
-    class Snow extends Rodelhang.Draw {
+    class Snow {
         constructor() {
-            super();
-            this.xP = Math.random() * 1400;
-            this.yP = Math.random() * 700;
+            this.gradient = Rodelhang.crc2.createRadialGradient(0, 0, 0, 0, 0, 5);
+            this.position = new Rodelhang.Vector(Math.random() * Rodelhang.crc2.canvas.width, Math.random() * Rodelhang.crc2.canvas.height);
+            this.velocity = new Rodelhang.Vector(0, Math.random() + 1 * 5);
         }
         move() {
-            this.yD = 4;
-            this.xD = Math.random() * 0;
-            this.xP += this.xD;
-            this.yP += this.yD;
-            if (this.yP > 600) {
-                this.yP = 0;
-            }
+            let offset = new Rodelhang.Vector(this.velocity.x, this.velocity.y);
+            this.position.add(offset);
+            if (this.position.y > Rodelhang.crc2.canvas.height)
+                this.position.y -= Rodelhang.crc2.canvas.height;
+            if (this.position.x > Rodelhang.crc2.canvas.width)
+                this.position.x -= Rodelhang.crc2.canvas.width;
+            if (this.position.y < 0)
+                this.position.y += Rodelhang.crc2.canvas.height;
+            if (this.position.x < 0)
+                this.position.x += Rodelhang.crc2.canvas.width;
         }
         draw() {
-            Rodelhang.crc2.fillStyle = this.color;
-            Rodelhang.crc2.fillStyle = "white";
-            Rodelhang.crc2.strokeStyle = "grey";
-            Rodelhang.crc2.lineWidth = 1;
             Rodelhang.crc2.beginPath();
-            Rodelhang.crc2.moveTo(this.xP - 2, this.yP + 1);
-            Rodelhang.crc2.lineTo(this.xP, this.yP - 2);
-            Rodelhang.crc2.lineTo(this.xP + 3, this.yP + 3);
-            Rodelhang.crc2.closePath();
-            Rodelhang.crc2.fill();
+            Rodelhang.crc2.save();
+            Rodelhang.crc2.translate(this.position.x, this.position.y);
+            Rodelhang.crc2.fillStyle = this.gradient;
+            Rodelhang.crc2.arc(0, 0, 2, 0, 2 * Math.PI);
+            Rodelhang.crc2.fillStyle = "white";
+            Rodelhang.crc2.strokeStyle = "lightgrey";
             Rodelhang.crc2.stroke();
+            Rodelhang.crc2.fill();
+            Rodelhang.crc2.restore();
         }
     }
     Rodelhang.Snow = Snow;

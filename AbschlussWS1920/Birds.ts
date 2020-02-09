@@ -17,10 +17,10 @@ namespace Rodelhang {
 
         setVelocity(): void {
 
-            let xBird: number = (5 * Math.random()) + 2;
-
-            this.velocity = new Vector(xBird, 0);
-
+            let xBird: number = (8 * Math.random()) + 2;
+            let yBird: number = Math.random() * -5;
+            this.velocity = new Vector(xBird, yBird );
+            
         }
 
         isHit(_hotspot: Vector): boolean {

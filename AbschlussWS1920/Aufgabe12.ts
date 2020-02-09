@@ -10,17 +10,14 @@ namespace Rodelhang {
     export let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
     export let birdHousePolePosition: Vector;
     let objects: Draw[] = [];
-    export let moveingObjects: Bird[] = [];
+    export let birdArray: Bird[] = [];
     export let foodArray: Food[] = [];
+    export let snowArray: Snow[] = [];
     let imagedata: ImageData;
     let fps: number = 25;
-    let i: number = 0;
-    let xMouse: number;
-    let yMouse: number;
     let snowball: Snowball;
     export let score: number = 0;
     export let name: string;
-    let throwFood: Food;
     var x = <HTMLAudioElement>document.getElementById("myAudio");
     var audio1 = new Audio('bam.mp3');
     var audio2 = new Audio('monster.mp3');
@@ -70,9 +67,9 @@ console.log("TEEST");
     function listeners(): void {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
 
-        document.getElementById("Start").addEventListener("click", timer);
+      //  document.getElementById("Start").addEventListener("click", timer);
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
-        document.getElementById("Restart").addEventListener("click", timer);
+    //    document.getElementById("Restart").addEventListener("click", timer);
         document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
         document.getElementById("submitButton").addEventListener("click", test);
         document.addEventListener("contextmenu", rightClick);
@@ -80,7 +77,6 @@ console.log("TEEST");
         // document.addEventListener("contextmenu", rightClick);
 
     }
-
 
 
     function test(): void {
@@ -102,7 +98,8 @@ console.log(document.getElementById("textInput").getAttribute("value"));
 
         console.log(name);
         drawCloud();
-        generateSnow();
+       // generateSnow();
+        drawSnow();
         drawTrees();
         drawSnowman();
         drawBirdhouse();
@@ -150,9 +147,9 @@ console.log(document.getElementById("textInput").getAttribute("value"));
 
         }
 
+        restockBirds();
 
-
-        for (let moveable of moveingObjects) {
+        for (let moveable of birdArray) {
 
             moveable.move();
             moveable.draw()
@@ -167,6 +164,13 @@ console.log(document.getElementById("textInput").getAttribute("value"));
             foodable.check();
         }
 
+
+        for (let snowy of snowArray) {
+
+
+            snowy.draw();
+            snowy.move();
+        }
 
         if (snowball) {
             snowball.draw();
@@ -187,9 +191,10 @@ console.log(document.getElementById("textInput").getAttribute("value"));
         window.setTimeout(getBirdHit, 600, snowballVector);
 
     }
-    function breakBird(_bird: Bird): void {
-        let index: number = moveingObjects.indexOf(_bird);
-        moveingObjects.splice(index, 1);
+    function killBird(_bird: Bird): void {
+        let index: number = birdArray.indexOf(_bird);
+        birdArray.splice(index, 1);
+        console.log("Anzahl Vögel" + birdArray.length)
         score = score + 10;
         var random: number = 10 * Math.random();
         console.log(random);
@@ -202,10 +207,10 @@ console.log(document.getElementById("textInput").getAttribute("value"));
         }
     }
 
-    function getBirdHit(_hotspot: Vector): void {
-        for (let bird of moveingObjects) {
-            if (bird.isHit(_hotspot)) {
-                breakBird(bird);
+    function getBirdHit(_aim: Vector): void {
+        for (let bird of birdArray) {
+            if (bird.isHit(_aim)) {
+                killBird(bird);
 
             }
         }
@@ -213,21 +218,40 @@ console.log(document.getElementById("textInput").getAttribute("value"));
 
 
     //Schnee
-    function generateSnow(): void {
+/*     function generateSnow(): void {
         for (let i: number = 0; i < 70; i++) {
 
             let snowflake: Snow = new Snow();
             objects.push(snowflake);
         }
+    } */
+
+    function drawSnow(): void {
+        let nFlakes: number = 20;
+        for (let i: number = 0; i < nFlakes; i++) {
+
+        let snowflake: Snow = new Snow();
+        snowArray.push(snowflake);
     }
+}
+
 
     function drawBird(): void {
         let nBirds: number = 20;
 
         for (let i: number = 0; i < nBirds; i++) {
             let bird: Bird = new Bird();
-            moveingObjects.push(bird);
+            birdArray.push(bird);
+            
+        }   
+    }
 
+    
+    function restockBirds(): void {
+
+        if (birdArray.length < 10) {
+            let bird: Bird = new Bird();
+            birdArray.push(bird);
         }
     }
 
@@ -236,8 +260,6 @@ console.log(document.getElementById("textInput").getAttribute("value"));
         foodArray = [];
         let food: Food = new Food(foodVector, 5);
         foodArray.push(food);
-
-
 
     }
 
