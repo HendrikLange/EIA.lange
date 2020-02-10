@@ -48,12 +48,16 @@ var Rodelhang;
             console.log(response);
             //let responseText: string = await response.text();
             //  console.log(responseText)
-            let highscorelists = document.getElementById("scores");
+            let nameList = document.getElementById("names");
+            let scorelist = document.getElementById("scores");
             let responseJSON = yield response.json();
             console.log(responseJSON);
             console.log("scoree");
-            for (let x in highscorelists) {
-                highscorelists.innerText = " " + "NAME : " + responseJSON[0].name + "Score: " + responseJSON[0].score + "<br>";
+            for (let x in scorelist) {
+                scorelist.innerText = " " + responseJSON[x].name;
+            }
+            for (let x in nameList) {
+                scorelist.innerText = " " + responseJSON[x].name;
             }
         });
     }
