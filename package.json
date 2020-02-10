@@ -1,11 +1,11 @@
 {
 	"name": "Server",
 	"version": "1.0.0",
-	"description": "Nice Ice",
+	"description": "RodelhangKilla",
 	"author": "Hendrik Lange",
 	"main": "Server.js",
 	"scripts": {
-		"start": "node Abschlussaufgabe/server/Server.js"
+		"start": "node AbschlussWS1920/server/Server.js"
 	},
 	"engines": {
 		"node": "8.10.0"

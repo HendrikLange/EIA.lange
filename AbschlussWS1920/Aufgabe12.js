@@ -36,13 +36,17 @@ var Rodelhang;
         }
     }
     function highscores() {
-        console.log("TEEST");
+        document.getElementById("scores").innerText = Rodelhang.score.toString();
+        document.getElementsByTagName("div")[0].style.display = "none";
+        document.getElementsByTagName("canvas")[0].classList.add("invisible");
+        document.getElementsByTagName("section")[0].classList.remove("invisible");
+        document.getElementById("nameIn").style.display = "none";
     }
     function listeners() {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
-        //  document.getElementById("Start").addEventListener("click", timer);
+        document.getElementById("Start").addEventListener("click", timer);
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
-        //    document.getElementById("Restart").addEventListener("click", timer);
+        document.getElementById("Restart").addEventListener("click", timer);
         document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
         document.getElementById("submitButton").addEventListener("click", test);
         document.addEventListener("contextmenu", rightClick);
@@ -76,6 +80,7 @@ var Rodelhang;
     function anzeigeCanvas() {
         document.getElementsByTagName("canvas")[0].classList.remove("invisible");
         document.getElementsByTagName("div")[0].classList.add("invisible");
+        document.getElementById("nameIn").style.display = "block";
     }
     function timer() {
         console.log("timer start");

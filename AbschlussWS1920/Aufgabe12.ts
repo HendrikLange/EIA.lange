@@ -53,12 +53,13 @@ namespace Rodelhang {
     } 
 
 
-function highscores():void
+    function highscores(): void {
+        document.getElementById("scores").innerText = score.toString();
+        document.getElementsByTagName("div")[0].style.display = "none";
 
-{
-
-console.log("TEEST");
-
+        document.getElementsByTagName("canvas")[0].classList.add("invisible");
+        document.getElementsByTagName("section")[0].classList.remove("invisible");
+        document.getElementById("nameIn").style.display = "none" ;
 }
 
 
@@ -67,9 +68,9 @@ console.log("TEEST");
     function listeners(): void {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
 
-      //  document.getElementById("Start").addEventListener("click", timer);
+        document.getElementById("Start").addEventListener("click", timer);
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
-    //    document.getElementById("Restart").addEventListener("click", timer);
+        document.getElementById("Restart").addEventListener("click", timer);
         document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
         document.getElementById("submitButton").addEventListener("click", test);
         document.addEventListener("contextmenu", rightClick);
@@ -116,6 +117,7 @@ console.log(document.getElementById("textInput").getAttribute("value"));
     function anzeigeCanvas() {
         document.getElementsByTagName("canvas")[0].classList.remove("invisible");
         document.getElementsByTagName("div")[0].classList.add("invisible");
+        document.getElementById("nameIn").style.display = "block";
     }
 
     function timer(): void {
@@ -130,7 +132,7 @@ console.log(document.getElementById("textInput").getAttribute("value"));
         document.getElementById("end").innerText = "Deine Punktzahl:" + " " + score.toString()
         document.getElementById("submitButton").addEventListener("click", sendRequestWithCustomData);
         document.getElementsByTagName("body")[0].addEventListener("change", handleChange);
-
+     
     }
 
 
