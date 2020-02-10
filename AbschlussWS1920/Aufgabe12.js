@@ -34,7 +34,7 @@ var Rodelhang;
         let response = fetch(Rodelhang.address + "?" + query);
     }
     function handleEnd() {
-        let name = document.getElementById("textInput").innerHTML;
+        let name = document.getElementById("textInput").value;
         if (name != null) {
             console.log(name);
             console.log("ausgeführt????");

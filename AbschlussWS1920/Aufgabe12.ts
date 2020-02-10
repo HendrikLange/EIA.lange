@@ -44,7 +44,7 @@ namespace Rodelhang {
     }
 
     function handleEnd(): void {
-        let name: any = document.getElementById("textInput").innerHTML;
+        let name: any = (<HTMLInputElement>document.getElementById("textInput")).value;
         if (name != null) {
             console.log(name);
             console.log("ausgeführt????");
