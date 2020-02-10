@@ -36,6 +36,7 @@ var Rodelhang;
     function handleEnd() {
         let name = document.getElementById("textInput").getAttribute("value");
         if (name != null) {
+            console.log("ausgeführt????");
             handleSendHS(name, Rodelhang.score);
             //self das es 
         }
