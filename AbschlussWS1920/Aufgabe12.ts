@@ -33,7 +33,7 @@ namespace Rodelhang {
     }
 
     function handleEnd(): void {
-        let name: any = document.getElementById("textInput").getAttribute("value")
+        let name: any = document.getElementById("textInput").getAttribute("value");
         if (name != null) {
             handleSendHS(name, score);
             //self das es 
@@ -76,6 +76,7 @@ namespace Rodelhang {
             document.getElementById("Restart").addEventListener("click", timer);
             document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
             document.getElementById("submitButton").addEventListener("click", test);
+            document.getElementById("submitButton").addEventListener("click", handleEnd);
             document.addEventListener("contextmenu", rightClick);
             document.getElementById("buttonHighscore").addEventListener("click", highscores);
             document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);

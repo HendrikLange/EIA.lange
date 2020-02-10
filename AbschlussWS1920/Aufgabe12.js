@@ -61,6 +61,7 @@ var Rodelhang;
             document.getElementById("Restart").addEventListener("click", timer);
             document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
             document.getElementById("submitButton").addEventListener("click", test);
+            document.getElementById("submitButton").addEventListener("click", handleEnd);
             document.addEventListener("contextmenu", rightClick);
             document.getElementById("buttonHighscore").addEventListener("click", highscores);
             document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);
