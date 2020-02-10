@@ -68,11 +68,11 @@ namespace Rodelhang {
 
         let highscorelists = document.getElementById("scores");
         let responseJSON = await response.json();
-        // console.log(responseJSON) 
+         console.log(responseJSON) 
         console.log("scoree");
        
         
-        highscorelists.innerText = " " + "name :" + responseJSON.name + "score:" + responseJSON.score;
+        highscorelists.innerText = " " + "name :" + responseJSON[name] + "score:" + responseJSON[score];
     }
 
     function listeners(): void {
