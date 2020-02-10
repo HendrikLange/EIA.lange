@@ -40,7 +40,7 @@ namespace Rodelhang {
     function handleSendHS(_name: string, _score: number): void {
         let query: string = "score=" + _score + "&name=" + _name;
         let response: Promise<Response> = fetch(address + "?" + query);
-        alert(response);
+        
     }
 
     function handleEnd(): void {

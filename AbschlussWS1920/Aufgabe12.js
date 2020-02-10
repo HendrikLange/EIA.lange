@@ -32,7 +32,6 @@ var Rodelhang;
     function handleSendHS(_name, _score) {
         let query = "score=" + _score + "&name=" + _name;
         let response = fetch(Rodelhang.address + "?" + query);
-        alert(response);
     }
     function handleEnd() {
         let name = document.getElementById("textInput").innerHTML;
