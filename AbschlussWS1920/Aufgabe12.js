@@ -47,12 +47,13 @@ var Rodelhang;
             let response = yield fetch(Rodelhang.address + "?" + query);
             console.log(response);
             let responseText = yield response.text();
-            console.log(responseText);
+            //  console.log(responseText)
             let highscorelists = document.getElementById("scores");
-            /*  let responseJSON = await response.json();
-             console.log(responseJSON) */
+            // let responseJSON = await response.json();
+            console.log(responseJSON);
             console.log("scoree");
-            highscorelists.innerText = " " + responseText;
+            let jsonObj = JSON.parse(responseText);
+            highscorelists.innerText = " " + "NAME: " + jsonObj.name + "SCORE" + jsonObj.score;
         });
     }
     function listeners() {
