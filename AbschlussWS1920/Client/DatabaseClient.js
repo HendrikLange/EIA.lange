@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DatabaseClient;
 (function (DatabaseClient) {
     window.addEventListener("load", init);
-    let serverAddress = "https://hendrik-eia2.herokuapp.com/;
+    let serverAddress = "https://hendrik-eia2.herokuapp.com/";
     //let serverAddress: string = "https://<your>.herokuapp.com/";    
     function init(_event) {
         console.log("Init");
