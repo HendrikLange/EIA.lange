@@ -72,7 +72,7 @@ namespace Rodelhang {
         console.log("scoree");
        
         
-        highscorelists.innerText = " " + "name :" + responseJSON[name] + "score:" + responseJSON[score];
+        highscorelists.innerText = " " + "name :" + responseJSON["name"] + "score:" + responseJSON["score"];
     }
 
     function listeners(): void {
