@@ -36,7 +36,7 @@ var Rodelhang;
             let responseText = yield response.text();
             let highscorelists = document.getElementById("scores");
             console.log("scoree");
-            highscorelists.innerText = responseText;
+            highscorelists.innerText = " " + responseText;
         });
     }
     function listeners() {
