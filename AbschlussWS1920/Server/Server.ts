@@ -83,7 +83,7 @@ export namespace Rodelhang {
             return "We encountered tecnical problems. Please try again later";
     }
 
-    function storeScore(_score: ScoreList): void { //muss hier nicht noch name rein?
+    function storeScore(_score: ScoreList): void { 
         highscores.insert(_score);
     }
 

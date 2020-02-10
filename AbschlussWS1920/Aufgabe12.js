@@ -35,6 +35,7 @@ var Rodelhang;
             let response = yield fetch(address + "?" + query);
             let responseText = yield response.text();
             let highscorelists = document.getElementById("scores");
+            console.log("scoree");
             highscorelists.innerText = responseText;
         });
     }

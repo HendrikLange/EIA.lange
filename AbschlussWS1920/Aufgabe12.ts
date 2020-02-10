@@ -44,6 +44,7 @@ namespace Rodelhang {
         let responseText: string = await response.text();
 
         let highscorelists = document.getElementById("scores");
+        console.log("scoree");
 
         highscorelists.innerText = responseText;
     }
