@@ -26,7 +26,7 @@ var Rodelhang;
         xhr.open("GET", address + "?" + sendString, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
-        // highscores();
+        highscores();
     }
     function handleStateChange(_event) {
         var xhr = _event.target;
@@ -41,6 +41,7 @@ var Rodelhang;
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none";
+        document.getElementById("scores").setAttribute("value", Rodelhang.score.toString());
     }
     function listeners() {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);

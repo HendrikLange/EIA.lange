@@ -40,7 +40,7 @@ namespace Rodelhang {
         xhr.open("GET", address + "?" + sendString, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
-       // highscores();
+        highscores();
     }
 
 
@@ -60,6 +60,7 @@ namespace Rodelhang {
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none" ;
+        document.getElementById("scores").setAttribute("value", score.toString());
 }
 
 
