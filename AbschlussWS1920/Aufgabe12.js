@@ -49,7 +49,7 @@ var Rodelhang;
             //let responseText: string = await response.text();
             //  console.log(responseText)
             let nameList = document.getElementById("names");
-            let scorelist = document.getElementById("scores");
+            let scorelist = document.getElementById("highscores");
             let responseJSON = yield response.json();
             console.log(responseJSON);
             console.log("scoree");

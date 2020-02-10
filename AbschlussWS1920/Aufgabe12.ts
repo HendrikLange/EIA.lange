@@ -66,7 +66,7 @@ namespace Rodelhang {
 
         //  console.log(responseText)
         let nameList = document.getElementById("names");
-        let scorelist = document.getElementById("scores");
+        let scorelist = document.getElementById("highscores");
         let responseJSON = await response.json();
         console.log(responseJSON)
         console.log("scoree");
