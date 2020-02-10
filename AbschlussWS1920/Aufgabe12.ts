@@ -46,7 +46,9 @@ namespace Rodelhang {
     function handleEnd(): void {
         let name: any = document.getElementById("textInput").innerHTML;
         if (name != null) {
+            console.log(name);
             console.log("ausgeführt????");
+            
             handleSendHS(name, score);
            
 
