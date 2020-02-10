@@ -43,7 +43,8 @@ namespace Rodelhang {
         let response: Response = await fetch(address + "?" + query);
         let responseText: string = await response.text();
 
-        let highscorelists: HTMLDivElement = <HTMLDivElement>document.querySelector("div#score");
+        let highscorelists = document.getElementById("scores");
+
         highscorelists.innerText = responseText;
     }
 
