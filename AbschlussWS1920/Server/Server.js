@@ -81,7 +81,9 @@ var Rodelhang;
     }
     function storeScore(_score) {
         highscores.insert(_score);
-        console.log(highscores);
+        let name = highscores.find({ name: "" });
+        let score = highscores.find({ score: "" });
+        console.log("name" + name + "score" + score);
     }
 })(Rodelhang = exports.Rodelhang || (exports.Rodelhang = {}));
 //# sourceMappingURL=Server.js.map

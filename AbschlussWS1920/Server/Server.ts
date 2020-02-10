@@ -85,7 +85,9 @@ export namespace Rodelhang {
 
     function storeScore(_score: ScoreList): void { 
         highscores.insert(_score);
-        console.log(highscores);
+        let name = highscores.find({name:""})
+        let score = highscores.find({score:""})
+        console.log("name" + name + "score" + score );
     }
 
 }
