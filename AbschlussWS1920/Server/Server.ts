@@ -54,7 +54,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
 function respond(_response: Http.ServerResponse, _text: string): void {
     //console.log("Preparing response: " + _text);
-    _response.setHeader("Access-Control-Allow-Origin", "*");
+    _response.setHeader("Access-Control-Allow-Origin", "https://hendriklange.github.io");
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.write(_text);
     _response.end();
