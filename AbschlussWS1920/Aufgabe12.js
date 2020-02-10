@@ -45,13 +45,13 @@ var Rodelhang;
             let query = "command=retrieve";
             let response = yield fetch(Rodelhang.address + "?" + query);
             console.log(response);
-            // let responseText: string = await response.text();
-            //  console.log(responseText)
-            // let highscorelists = document.getElementById("scores");
-            let responseJSON = yield response.json();
-            console.log(responseJSON);
+            let responseText = yield response.text();
+            console.log(responseText);
+            let highscorelists = document.getElementById("scores");
+            /*  let responseJSON = await response.json();
+             console.log(responseJSON) */
             console.log("scoree");
-            //   highscorelists.innerText = " " + responseText;
+            highscorelists.innerText = " " + responseText;
         });
     }
     function listeners() {

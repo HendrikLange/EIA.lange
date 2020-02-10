@@ -39,12 +39,12 @@ namespace Rodelhang {
 
     function handleSendHS(_name: string, _score: number): void {
         let query: string = "score=" + _score + "&name=" + _name;
-        let response: Promise<Response> =  fetch(address + "?" + query);
-       
+        let response: Promise<Response> = fetch(address + "?" + query);
+
     }
 
     function handleEnd(): void {
-        let name: any =  document.getElementById("textInput").getAttribute("value");
+        let name: any = document.getElementById("textInput").getAttribute("value");
         if (name != null) {
             handleSendHS(name, score);
             //self das es 
@@ -59,16 +59,16 @@ namespace Rodelhang {
         let response: Response = await fetch(address + "?" + query);
         console.log(response)
 
-        // let responseText: string = await response.text();
+        let responseText: string = await response.text();
 
-        //  console.log(responseText)
+        console.log(responseText)
 
-        // let highscorelists = document.getElementById("scores");
-        let responseJSON = await response.json();
-        console.log(responseJSON)
+        let highscorelists = document.getElementById("scores");
+        /*  let responseJSON = await response.json();
+         console.log(responseJSON) */
         console.log("scoree");
 
-        //   highscorelists.innerText = " " + responseText;
+        highscorelists.innerText = " " + responseText;
     }
 
     function listeners(): void {
