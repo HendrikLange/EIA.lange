@@ -53,8 +53,9 @@ var Rodelhang;
             let responseJSON = yield response.json();
             console.log(responseJSON);
             console.log("scoree");
+            console.log(responseJSON.length);
             for (let x; x < responseJSON.length; x++) {
-                scorelist.innerText = " " + responseJSON[x].name;
+                nameList.innerText = " " + responseJSON[x].name;
             }
             for (let x; x < responseJSON.length; x++) {
                 scorelist.innerText = " " + responseJSON[x].score;

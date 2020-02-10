@@ -70,9 +70,9 @@ namespace Rodelhang {
         let responseJSON = await response.json();
         console.log(responseJSON)
         console.log("scoree");
-
+        console.log(responseJSON.length);
         for (let x:number; x < responseJSON.length; x++) {
-            scorelist.innerText = " " +  responseJSON[x].name;
+            nameList.innerText = " " +  responseJSON[x].name;
         }
         for (let x:number; x < responseJSON.length; x++) {
             scorelist.innerText = " " +  responseJSON[x].score;
