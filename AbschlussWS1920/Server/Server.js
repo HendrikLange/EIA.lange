@@ -81,6 +81,7 @@ var Rodelhang;
     }
     function storeScore(_score) {
         highscores.insert(_score);
+        console.log(highscores);
     }
 })(Rodelhang = exports.Rodelhang || (exports.Rodelhang = {}));
 //# sourceMappingURL=Server.js.map
