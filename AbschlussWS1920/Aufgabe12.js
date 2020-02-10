@@ -33,7 +33,9 @@ var Rodelhang;
         return __awaiter(this, void 0, void 0, function* () {
             let query = "command=retrieve";
             let response = yield fetch(address + "?" + query);
+            console.log(response);
             let responseText = yield response.text();
+            console.log(responseText);
             let highscorelists = document.getElementById("scores");
             console.log("scoree");
             highscorelists.innerText = " " + responseText;

@@ -41,9 +41,12 @@ namespace Rodelhang {
     async function handleRetriveHS(_event: Event): Promise<void> {
         let query: string = "command=retrieve";
         let response: Response = await fetch(address + "?" + query);
+        console.log(response)
+        
         let responseText: string = await response.text();
-
+        console.log(responseText)
         let highscorelists = document.getElementById("scores");
+        
         console.log("scoree");
 
         highscorelists.innerText = " " + responseText;
