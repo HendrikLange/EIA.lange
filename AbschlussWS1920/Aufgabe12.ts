@@ -40,7 +40,7 @@ namespace Rodelhang {
     function handleSendHS(_name: string, _score: number): void {
         let query: string = "score=" + _score + "&name=" + _name;
         let response: Promise<Response> = fetch(address + "?" + query);
-        
+
     }
 
     function handleEnd(): void {
@@ -48,9 +48,9 @@ namespace Rodelhang {
         if (name != null) {
             console.log(name);
             console.log("ausgeführt????");
-            
+
             handleSendHS(name, score);
-           
+
 
         }
     }
@@ -64,15 +64,16 @@ namespace Rodelhang {
 
         //let responseText: string = await response.text();
 
-      //  console.log(responseText)
+        //  console.log(responseText)
 
         let highscorelists = document.getElementById("scores");
         let responseJSON = await response.json();
-         console.log(responseJSON) 
+        console.log(responseJSON)
         console.log("scoree");
-       
-        
-        highscorelists.innerText = " " + "name :" + responseJSON[0].name + "score:" + responseJSON[0].score;
+
+        for (let x in highscorelists) {
+            highscorelists.innerText = " " + "NAME : " + responseJSON[0].name + "Score: " + responseJSON[0].score + "<br>";
+        }
     }
 
     function listeners(): void {

@@ -52,7 +52,9 @@ var Rodelhang;
             let responseJSON = yield response.json();
             console.log(responseJSON);
             console.log("scoree");
-            highscorelists.innerText = " " + "name :" + responseJSON[0].name + "score:" + responseJSON[0].score;
+            for (let x in highscorelists) {
+                highscorelists.innerText = " " + "NAME : " + responseJSON[0].name + "Score: " + responseJSON[0].score + "<br>";
+            }
         });
     }
     function listeners() {
