@@ -55,10 +55,10 @@ var Rodelhang;
             console.log("scoree");
             console.log(responseJSON.length);
             for (let x = 0; x < responseJSON.length; x++) {
-                nameList.innerText = nameList.innerHTML + " " + responseJSON[x].name;
+                nameList.innerText = nameList.innerHTML + " " + responseJSON[x].name + "<br>";
             }
             for (let x = 0; x < responseJSON.length; x++) {
-                scorelist.innerText = scorelist.innerHTML + " " + responseJSON[x].score;
+                scorelist.innerText = scorelist.innerHTML + " " + responseJSON[x].score + "<br>";
             }
         });
     }
