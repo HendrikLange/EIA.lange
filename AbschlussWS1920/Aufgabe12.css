@@ -63,6 +63,19 @@ button
 }
 
 
+#names{
+
+	display: inline;
+}
+
+#highscores{
+
+	display: inline;
+}
+
+
+
+
 #name{
 	display: inline-block;
   -webkit-box-sizing: content-box;
