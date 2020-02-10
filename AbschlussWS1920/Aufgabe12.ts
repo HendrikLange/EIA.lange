@@ -68,7 +68,7 @@ namespace Rodelhang {
 
         let highscorelists = document.getElementById("scores");
        // let responseJSON = await response.json();
-         console.log(responseJSON) 
+        // console.log(responseJSON) 
         console.log("scoree");
         let jsonObj = JSON.parse(responseText)
 

@@ -50,7 +50,7 @@ var Rodelhang;
             //  console.log(responseText)
             let highscorelists = document.getElementById("scores");
             // let responseJSON = await response.json();
-            console.log(responseJSON);
+            // console.log(responseJSON) 
             console.log("scoree");
             let jsonObj = JSON.parse(responseText);
             highscorelists.innerText = " " + "NAME: " + jsonObj.name + "SCORE" + jsonObj.score;
