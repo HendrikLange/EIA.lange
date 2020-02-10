@@ -44,11 +44,11 @@ namespace Rodelhang {
         console.log(response)
         
         let responseText: string = await response.text();
-       // let responseJSON = await response.json();
+        
         console.log(responseText)
        // console.log(responseJSON)
         let highscorelists = document.getElementById("scores");
-        
+        let responseJSON = await response.json();
         console.log("scoree");
 
         highscorelists.innerText = " " + responseText;
