@@ -71,10 +71,10 @@ namespace Rodelhang {
         console.log(responseJSON)
         console.log("scoree");
         console.log(responseJSON.length);
-        for (let x:number; x < responseJSON.length; x++) {
+        for (let x:number = 0; x < responseJSON.length; x++) {
             nameList.innerText = " " +  responseJSON[x].name;
         }
-        for (let x:number; x < responseJSON.length; x++) {
+        for (let x:number = 0; x < responseJSON.length; x++) {
             scorelist.innerText = " " +  responseJSON[x].score;
         }
     }
