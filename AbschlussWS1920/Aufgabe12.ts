@@ -43,15 +43,16 @@ namespace Rodelhang {
         let response: Response = await fetch(address + "?" + query);
         console.log(response)
         
-        let responseText: string = await response.text();
+       // let responseText: string = await response.text();
         
-        console.log(responseText)
-       // console.log(responseJSON)
-        let highscorelists = document.getElementById("scores");
+      //  console.log(responseText)
+     
+       // let highscorelists = document.getElementById("scores");
         let responseJSON = await response.json();
+        console.log(responseJSON)
         console.log("scoree");
 
-        highscorelists.innerText = " " + responseText;
+     //   highscorelists.innerText = " " + responseText;
     }
 
     function listeners(): void {
