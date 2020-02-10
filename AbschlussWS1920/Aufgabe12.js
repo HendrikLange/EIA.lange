@@ -35,9 +35,9 @@ var Rodelhang;
             let response = yield fetch(address + "?" + query);
             console.log(response);
             let responseText = yield response.text();
-            let responseJSON = yield response.json();
+            // let responseJSON = await response.json();
             console.log(responseText);
-            console.log(responseJSON);
+            // console.log(responseJSON)
             let highscorelists = document.getElementById("scores");
             console.log("scoree");
             highscorelists.innerText = " " + responseText;
