@@ -25,32 +25,6 @@ namespace Rodelhang {
     let address: string = "https://hendrik-eia2.herokuapp.com/"; // Hier server adresse einfügen
 
 
-    function handleChange(_event: Event): void {
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        target.setAttribute("value", target.value);
-    }
-
-
-    function sendRequestWithCustomData(): void {
-        console.log("requestcustom");
-        let xhr: XMLHttpRequest = new XMLHttpRequest();
-        let sendString: string = "";
-        sendString += "name:" + document.getElementById("textInput").getAttribute("value") + "&" + "score:" + score;
-
-        xhr.open("GET", address + "?" + sendString, true);
-        xhr.addEventListener("readystatechange", handleStateChange);
-        xhr.send();
-        highscores();
-    }
-
-
-    function handleStateChange(_event: ProgressEvent): void {
-        var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-            console.log("response: " + xhr.response);
-        }
-    } 
 
 
     function highscores(): void {
@@ -59,12 +33,19 @@ namespace Rodelhang {
 
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
-        document.getElementById("nameIn").style.display = "none" ;
-        document.getElementById("scores").setAttribute("value", score.toString());
-}
+        document.getElementById("nameIn").style.display = "none";
+       
+    }
 
 
+    async function handleRetriveHS(_event: Event): Promise<void> {
+        let query: string = "command=retrieve";
+        let response: Response = await fetch(address + "?" + query);
+        let responseText: string = await response.text();
 
+        let highscorelists: HTMLDivElement = <HTMLDivElement>document.querySelector("div#score");
+        highscorelists.innerText = responseText;
+    }
 
     function listeners(): void {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
@@ -76,6 +57,7 @@ namespace Rodelhang {
         document.getElementById("submitButton").addEventListener("click", test);
         document.addEventListener("contextmenu", rightClick);
         document.getElementById("buttonHighscore").addEventListener("click", highscores);
+        document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);
         // document.addEventListener("contextmenu", rightClick);
 
     }
@@ -83,8 +65,8 @@ namespace Rodelhang {
 
     function test(): void {
 
-console.log(score);
-console.log(document.getElementById("textInput").getAttribute("value"));
+        console.log(score);
+        console.log(document.getElementById("textInput").getAttribute("value"));
     }
 
     function init(): void {
@@ -100,7 +82,7 @@ console.log(document.getElementById("textInput").getAttribute("value"));
 
         console.log(name);
         drawCloud();
-       // generateSnow();
+        // generateSnow();
         drawSnow();
         drawTrees();
         drawSnowman();
@@ -131,9 +113,8 @@ console.log(document.getElementById("textInput").getAttribute("value"));
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("end").innerText = "Deine Punktzahl:" + " " + score.toString()
-        document.getElementById("submitButton").addEventListener("click", sendRequestWithCustomData);
-        document.getElementsByTagName("body")[0].addEventListener("change", handleChange);
-     
+        setTimeout(handleRetriveHS, 100);
+
     }
 
 
@@ -221,22 +202,22 @@ console.log(document.getElementById("textInput").getAttribute("value"));
 
 
     //Schnee
-/*     function generateSnow(): void {
-        for (let i: number = 0; i < 70; i++) {
-
-            let snowflake: Snow = new Snow();
-            objects.push(snowflake);
-        }
-    } */
+    /*     function generateSnow(): void {
+            for (let i: number = 0; i < 70; i++) {
+    
+                let snowflake: Snow = new Snow();
+                objects.push(snowflake);
+            }
+        } */
 
     function drawSnow(): void {
         let nFlakes: number = 20;
         for (let i: number = 0; i < nFlakes; i++) {
 
-        let snowflake: Snow = new Snow();
-        snowArray.push(snowflake);
+            let snowflake: Snow = new Snow();
+            snowArray.push(snowflake);
+        }
     }
-}
 
 
     function drawBird(): void {
@@ -245,11 +226,11 @@ console.log(document.getElementById("textInput").getAttribute("value"));
         for (let i: number = 0; i < nBirds; i++) {
             let bird: Bird = new Bird();
             birdArray.push(bird);
-            
-        }   
+
+        }
     }
 
-    
+
     function restockBirds(): void {
 
         if (birdArray.length < 10) {

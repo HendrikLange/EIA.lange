@@ -1,3 +1,11 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var Rodelhang;
 (function (Rodelhang) {
     window.addEventListener("load", init);
@@ -14,34 +22,21 @@ var Rodelhang;
     var audio1 = new Audio('bam.mp3');
     var audio2 = new Audio('monster.mp3');
     let address = "https://hendrik-eia2.herokuapp.com/"; // Hier server adresse einfügen
-    function handleChange(_event) {
-        let target = _event.target;
-        target.setAttribute("value", target.value);
-    }
-    function sendRequestWithCustomData() {
-        console.log("requestcustom");
-        let xhr = new XMLHttpRequest();
-        let sendString = "";
-        sendString += "name:" + document.getElementById("textInput").getAttribute("value") + "&" + "score:" + Rodelhang.score;
-        xhr.open("GET", address + "?" + sendString, true);
-        xhr.addEventListener("readystatechange", handleStateChange);
-        xhr.send();
-        highscores();
-    }
-    function handleStateChange(_event) {
-        var xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-            console.log("response: " + xhr.response);
-        }
-    }
     function highscores() {
         document.getElementById("scores").innerText = Rodelhang.score.toString();
         document.getElementsByTagName("div")[0].style.display = "none";
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none";
-        document.getElementById("scores").setAttribute("value", Rodelhang.score.toString());
+    }
+    function handleRetriveHS(_event) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let query = "command=retrieve";
+            let response = yield fetch(address + "?" + query);
+            let responseText = yield response.text();
+            let highscorelists = document.querySelector("div#score");
+            highscorelists.innerText = responseText;
+        });
     }
     function listeners() {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
@@ -52,6 +47,7 @@ var Rodelhang;
         document.getElementById("submitButton").addEventListener("click", test);
         document.addEventListener("contextmenu", rightClick);
         document.getElementById("buttonHighscore").addEventListener("click", highscores);
+        document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);
         // document.addEventListener("contextmenu", rightClick);
     }
     function test() {
@@ -92,8 +88,7 @@ var Rodelhang;
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("end").innerText = "Deine Punktzahl:" + " " + Rodelhang.score.toString();
-        document.getElementById("submitButton").addEventListener("click", sendRequestWithCustomData);
-        document.getElementsByTagName("body")[0].addEventListener("change", handleChange);
+        setTimeout(handleRetriveHS, 100);
     }
     function update() {
         Rodelhang.crc2.clearRect(0, 0, 600, 700);

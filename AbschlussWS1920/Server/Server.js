@@ -1,53 +1,86 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Simple server managing between client and database
  * @author: Jirka Dell'Oro-Friedl
  */
-Object.defineProperty(exports, "__esModule", { value: true });
+// mongodb+srv://Testuser:<password>@eia2-hendrik-mwozq.mongodb.net/test?retryWrites=true&w=majority
 const Http = require("http");
 const Url = require("url");
-const Database = require("./Database");
-console.log("Server starting");
-let port = process.env.PORT;
-if (port == undefined)
-    port = 8100;
-let server = Http.createServer();
-server.addListener("listening", handleListen);
-server.addListener("request", handleRequest);
-server.listen(port);
-function handleListen() {
-    console.log("Listening on port: " + port);
-}
-function handleRequest(_request, _response) {
-    console.log("Request received");
-    let query = Url.parse(_request.url, true).query;
-    var command = query["command"];
-    switch (command) {
-        case "insert":
-            let player = {
-                name: query["name"],
-                score: parseInt(query["score"]),
-            };
-            Database.insert(player);
-            respond(_response, "storing data");
-            break;
-        case "refresh":
-            Database.findAll(findCallback);
-            break;
-        default:
-            respond(_response, "unknown command: " + command);
-            break;
+const Mongo = require("mongodb");
+var Rodelhang;
+(function (Rodelhang) {
+    let highscores;
+    let databaseUrl = "mongodb+srv://Testuser:123456asdf@eia2-hendrik-mwozq.mongodb.net/test?retryWrites=true&w=majority";
+    connectToDatabase(databaseUrl);
+    let port = process.env.PORT;
+    if (port == undefined)
+        port = 8100;
+    let server = Http.createServer();
+    // server.addListener("listening", handleListen);
+    console.log("Server starting");
+    server.addListener("request", handleRequest);
+    server.listen(port);
+    function connectToDatabase(_url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let options = { useNewUrlParser: true, useUnifiedTopology: true };
+            let mongoClient = new Mongo.MongoClient(_url, options);
+            yield mongoClient.connect();
+            highscores = mongoClient.db("Vogelhaus").collection("scores");
+            console.log("Database connection ", highscores != undefined);
+        });
     }
-    // findCallback is an inner function so that _response is in scope
-    function findCallback(json) {
-        respond(_response, json);
+    function handleRequest(_request, _response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("What's up?");
+            _response.setHeader("content-type", "text/html; charset=utf-8");
+            _response.setHeader("Access-Control-Allow-Origin", "*");
+            if (_request.url) {
+                let url = Url.parse(_request.url, true);
+                // for (let key in url.query) {
+                //    _response.write(key + ":" + url.query[key] + "<br/>");
+                //}
+                if (url.query["command"] == "retrieve") {
+                    let report = yield retrieveOrders();
+                    if (report == "We encountered tecnical problems. Please try again later")
+                        _response.write(report);
+                    else
+                        _response.write(JSON.stringify(report));
+                }
+                else {
+                    console.log("urlQuery: ", url.query);
+                    let jsonString = JSON.stringify(url.query);
+                    _response.write(jsonString);
+                    storeScore(url.query);
+                    console.log(jsonString);
+                }
+            }
+            _response.end();
+        });
     }
-}
-function respond(_response, _text) {
-    //console.log("Preparing response: " + _text);
-    _response.setHeader("Access-Control-Allow-Origin", "https://hendriklange.github.io");
-    _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.write(_text);
-    _response.end();
-}
+    function retrieveOrders() {
+        return __awaiter(this, void 0, void 0, function* () {
+            // console.log("Asking DB about Orders ", orders.find());
+            let cursor = yield highscores.find();
+            let answer = yield cursor.toArray();
+            console.log("DB CursorToArray", answer);
+            if (answer != null) {
+                return answer;
+            }
+            else
+                return "We encountered tecnical problems. Please try again later";
+        });
+    }
+    function storeScore(_score) {
+        highscores.insert(_score);
+    }
+})(Rodelhang = exports.Rodelhang || (exports.Rodelhang = {}));
 //# sourceMappingURL=Server.js.map
