@@ -8,13 +8,14 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace Rodelhang {
-    interface ScoreList {
+
+    export interface ScoreList {
         [type: string]: string | string[];
     }
 
 
     let highscores: Mongo.Collection;
-    
+
     let databaseUrl: string = "mongodb+srv://Testuser:123456asdf@eia2-hendrik-mwozq.mongodb.net/test?retryWrites=true&w=majority";
     connectToDatabase(databaseUrl);
 
@@ -27,7 +28,7 @@ export namespace Rodelhang {
 
 
     let server: Http.Server = Http.createServer();
-   // server.addListener("listening", handleListen);
+    // server.addListener("listening", handleListen);
     console.log("Server starting");
     server.addListener("request", handleRequest);
     server.listen(port);
@@ -59,7 +60,7 @@ export namespace Rodelhang {
 
                 else
                     _response.write(JSON.stringify(report));
-            } 
+            }
             else {
                 console.log("urlQuery: ", url.query);
                 let jsonString: string = JSON.stringify(url.query);
@@ -83,9 +84,9 @@ export namespace Rodelhang {
             return "We encountered tecnical problems. Please try again later";
     }
 
-    function storeScore(_score: ScoreList): void { 
+    function storeScore(_score: ScoreList): void {
         highscores.insert(_score);
-    
+
     }
 
 }
