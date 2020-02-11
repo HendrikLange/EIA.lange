@@ -3,11 +3,6 @@ namespace Rodelhang {
     export class Bird extends Move {
 
         //  target: Vector;
-        isTargeting: boolean;
-        isTrained: boolean;
-        isThinking: boolean;
-        isPecking: boolean;
-        isBaited: boolean;
         size: number = 5;
 
         constructor() {

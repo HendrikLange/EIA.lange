@@ -3,6 +3,7 @@ var Rodelhang;
     class Bird extends Rodelhang.Move {
         constructor() {
             super();
+            //  target: Vector;
             this.size = 5;
             this.setVelocity();
         }
