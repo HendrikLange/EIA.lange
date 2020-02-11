@@ -120,10 +120,7 @@ namespace Rodelhang {
         drawSky();
         drawHill();
         drawSun();
-
-        console.log(name);
         drawCloud();
-        // generateSnow();
         drawSnow();
         drawTrees();
         drawSnowman();
@@ -179,7 +176,7 @@ namespace Rodelhang {
         for (let moveable of birdArray) {
 
             moveable.move();
-            moveable.draw()
+            moveable.draw();
 
         }
 
