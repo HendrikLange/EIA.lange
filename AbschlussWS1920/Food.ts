@@ -82,7 +82,7 @@ namespace Rodelhang {
                 this.stopMaxX = this.target.x + 10;
                 this.stopMinY = this.target.y - 10;
                 this.stopMaxY = this.target.y + 10;
-                bird.isBaited = true;
+               
 
             }
             console.log(this.baitedBirds);

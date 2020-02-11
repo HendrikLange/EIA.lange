@@ -10,7 +10,7 @@ var Rodelhang;
 (function (Rodelhang) {
     window.addEventListener("load", init);
     Rodelhang.canvas = document.getElementsByTagName("canvas")[0];
-    let objects = [];
+    let treeArray = [];
     Rodelhang.birdArray = [];
     Rodelhang.foodArray = [];
     Rodelhang.snowArray = [];
@@ -121,10 +121,9 @@ var Rodelhang;
         Rodelhang.crc2.clearRect(0, 0, 600, 700);
         Rodelhang.crc2.putImageData(imagedata, 0, 0);
         window.setTimeout(update, 1000 / fps);
-        for (let i = 0; i < objects.length; i++) {
-            let object = objects[i];
-            object.draw();
-            object.move();
+        for (let i = 0; i < treeArray.length; i++) {
+            let tree = treeArray[i];
+            tree.draw();
         }
         restockBirds();
         for (let moveable of Rodelhang.birdArray) {
@@ -254,7 +253,7 @@ var Rodelhang;
     function drawTrees() {
         for (let i = 0; i < 3; i++) {
             let tree = new Rodelhang.Tree();
-            objects.push(tree);
+            treeArray.push(tree);
         }
     }
     function drawSky() {

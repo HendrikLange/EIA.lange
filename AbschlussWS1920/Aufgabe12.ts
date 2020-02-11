@@ -9,7 +9,7 @@ namespace Rodelhang {
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
     export let birdHousePolePosition: Vector;
-    let objects: Draw[] = [];
+    let treeArray: Tree[] = [];
     export let birdArray: Bird[] = [];
     export let foodArray: Food[] = [];
     export let snowArray: Snow[] = [];
@@ -164,10 +164,9 @@ namespace Rodelhang {
         window.setTimeout(update, 1000 / fps);
 
 
-        for (let i: number = 0; i < objects.length; i++) {
-            let object: Draw = objects[i];
-            object.draw();
-            object.move();
+        for (let i: number = 0; i < treeArray.length; i++) {
+            let tree: Tree = treeArray[i];
+            tree.draw();
 
         }
 
@@ -344,7 +343,7 @@ namespace Rodelhang {
     function drawTrees(): void {
         for (let i: number = 0; i < 3; i++) {
             let tree: Tree = new Tree();
-            objects.push(tree);
+            treeArray.push(tree);
         }
     }
 

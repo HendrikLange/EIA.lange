@@ -2,7 +2,7 @@ namespace Rodelhang {
 
     export class Bird extends Move {
 
-        //  target: Vector;
+      
         size: number = 5;
 
         constructor() {
@@ -18,10 +18,10 @@ namespace Rodelhang {
             
         }
 
-        isHit(_hotspot: Vector): boolean {
+        isHit(_aim: Vector): boolean {
             let hitsize: number = 5 * this.size;
-            let difference: Vector = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
-            return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize) //Entfernung vertikale
+            let difference: Vector = new Vector(_aim.x - this.position.x, _aim.y - this.position.y);
+            return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize) 
         }
 
         draw(): void {

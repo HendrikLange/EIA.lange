@@ -3,7 +3,6 @@ var Rodelhang;
     class Bird extends Rodelhang.Move {
         constructor() {
             super();
-            //  target: Vector;
             this.size = 5;
             this.setVelocity();
         }
@@ -12,10 +11,10 @@ var Rodelhang;
             let yBird = Math.random() * -5;
             this.velocity = new Rodelhang.Vector(xBird, yBird);
         }
-        isHit(_hotspot) {
+        isHit(_aim) {
             let hitsize = 5 * this.size;
-            let difference = new Rodelhang.Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
-            return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize); //Entfernung vertikale
+            let difference = new Rodelhang.Vector(_aim.x - this.position.x, _aim.y - this.position.y);
+            return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize);
         }
         draw() {
             Rodelhang.crc2.save();

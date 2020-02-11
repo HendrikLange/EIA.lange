@@ -1,6 +1,6 @@
 var Rodelhang;
 (function (Rodelhang) {
-    class Score extends Rodelhang.Draw {
+    class Score extends Draw {
     }
     Rodelhang.Score = Score;
 })(Rodelhang || (Rodelhang = {}));

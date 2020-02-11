@@ -1,11 +1,14 @@
 namespace Rodelhang {
 
 
-    export class Tree extends Draw {
+    export class Tree  {
         color: string;
+        xP: number;
+        yP: number;
+     
 
         constructor() {
-            super();
+            
             this.xP = 60 + Math.random() * 450;
             this.yP = 300 + Math.random() * 190;
             this.color = "#799F0C";

@@ -1,8 +1,7 @@
 var Rodelhang;
 (function (Rodelhang) {
-    class Tree extends Rodelhang.Draw {
+    class Tree {
         constructor() {
-            super();
             this.xP = 60 + Math.random() * 450;
             this.yP = 300 + Math.random() * 190;
             this.color = "#799F0C";
