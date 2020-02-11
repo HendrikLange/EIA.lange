@@ -34,7 +34,7 @@ namespace Rodelhang {
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none";
-        document.getElementById("playerName").style.display = "none";
+      //  document.getElementById("playerName").style.display = "none";
         document.getElementById("scores").style.display = "none";
 
     }
@@ -151,15 +151,15 @@ namespace Rodelhang {
 
     function timer(): void {
         console.log("timer start");
-        setTimeout(end, 5000)
-        x.play();
+        setTimeout(end, 20000);
+      
     }
 
     function end(): void { // Spiel fertig
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("end").innerText = "Deine Punktzahl:" + " " + score.toString()
-        document.getElementById("playerName").style.display = "block";
+      //  document.getElementById("playerName").style.display = "block";
         document.getElementById("scores").style.display = "block";
         setTimeout(handleRetriveHS, 100);
 
