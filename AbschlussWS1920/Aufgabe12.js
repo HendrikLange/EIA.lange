@@ -28,7 +28,6 @@ var Rodelhang;
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none";
-        //  document.getElementById("playerName").style.display = "none";
         document.getElementById("scores").style.display = "none";
     }
     function handleSendHS(_name, _score) {
@@ -56,7 +55,6 @@ var Rodelhang;
             console.log(responseJSON);
             console.log("scoree");
             console.log(responseJSON.length);
-            let scores = [];
             responseJSON.sort(function (a, b) {
                 return b.score - a.score;
             });
@@ -113,7 +111,6 @@ var Rodelhang;
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("end").innerText = "Deine Punktzahl:" + " " + Rodelhang.score.toString();
-        //  document.getElementById("playerName").style.display = "block";
         document.getElementById("scores").style.display = "block";
         setTimeout(handleRetriveHS, 100);
     }
@@ -126,9 +123,9 @@ var Rodelhang;
             tree.draw();
         }
         restockBirds();
-        for (let moveable of Rodelhang.birdArray) {
-            moveable.move();
-            moveable.draw();
+        for (let bird of Rodelhang.birdArray) {
+            bird.move();
+            bird.draw();
         }
         for (let foodable of Rodelhang.foodArray) {
             foodable.draw();
@@ -172,14 +169,6 @@ var Rodelhang;
             }
         }
     }
-    //Schnee
-    /*     function generateSnow(): void {
-            for (let i: number = 0; i < 70; i++) {
-    
-                let snowflake: Snow = new Snow();
-                objects.push(snowflake);
-            }
-        } */
     function drawSnow() {
         let nFlakes = 20;
         for (let i = 0; i < nFlakes; i++) {

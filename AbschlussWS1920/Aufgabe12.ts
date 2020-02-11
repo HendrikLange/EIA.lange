@@ -4,6 +4,7 @@ namespace Rodelhang {
         x: number;
         y: number;
     }
+
     window.addEventListener("load", init);
 
     export let crc2: CanvasRenderingContext2D;
@@ -30,11 +31,9 @@ namespace Rodelhang {
     function highscores(): void {
         document.getElementById("scores").innerText = score.toString();
         document.getElementsByTagName("div")[0].style.display = "none";
-
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none";
-      //  document.getElementById("playerName").style.display = "none";
         document.getElementById("scores").style.display = "none";
 
     }
@@ -52,12 +51,8 @@ namespace Rodelhang {
             console.log("ausgeführt????");
 
             handleSendHS(name, score);
-
-
         }
     }
-
-
 
     async function handleRetriveHS(_event: Event): Promise<void> {
         let query: string = "command=retrieve";
@@ -73,7 +68,7 @@ namespace Rodelhang {
         console.log(responseJSON)
         console.log("scoree");
         console.log(responseJSON.length);
-        let scores: number[] = [];
+       
 
         responseJSON.sort(function (a:any, b:any) {
             return b.score - a.score;
@@ -88,13 +83,10 @@ namespace Rodelhang {
 
         }
         nameList.innerHTML = scoreOutput;
-
-
     }
 
     function listeners(): void {
         document.getElementById("Start").addEventListener("click", anzeigeCanvas);
-
         document.getElementById("Start").addEventListener("click", timer);
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
         document.getElementById("Restart").addEventListener("click", timer);
@@ -106,8 +98,6 @@ namespace Rodelhang {
         // document.addEventListener("contextmenu", rightClick);
 
     }
-
-
 
 
     function init(): void {
@@ -126,8 +116,6 @@ namespace Rodelhang {
         drawSnowman();
         drawBirdhouse();
         drawBird();
-
-
 
         imagedata = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -150,14 +138,11 @@ namespace Rodelhang {
     function end(): void { // Spiel fertig
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
-        document.getElementById("end").innerText = "Deine Punktzahl:" + " " + score.toString()
-      //  document.getElementById("playerName").style.display = "block";
+        document.getElementById("end").innerText = "Deine Punktzahl:" + " " + score.toString();
         document.getElementById("scores").style.display = "block";
         setTimeout(handleRetriveHS, 100);
 
     }
-
-
     function update(): void {
         crc2.clearRect(0, 0, 600, 700);
         crc2.putImageData(imagedata, 0, 0);
@@ -172,10 +157,10 @@ namespace Rodelhang {
 
         restockBirds();
 
-        for (let moveable of birdArray) {
+        for (let bird of birdArray) {
 
-            moveable.move();
-            moveable.draw();
+            bird.move();
+            bird.draw();
 
         }
 
@@ -239,16 +224,6 @@ namespace Rodelhang {
         }
     }
 
-
-    //Schnee
-    /*     function generateSnow(): void {
-            for (let i: number = 0; i < 70; i++) {
-    
-                let snowflake: Snow = new Snow();
-                objects.push(snowflake);
-            }
-        } */
-
     function drawSnow(): void {
         let nFlakes: number = 20;
         for (let i: number = 0; i < nFlakes; i++) {
@@ -257,7 +232,6 @@ namespace Rodelhang {
             snowArray.push(snowflake);
         }
     }
-
 
     function drawBird(): void {
         let nBirds: number = 20;
@@ -268,7 +242,6 @@ namespace Rodelhang {
 
         }
     }
-
 
     function restockBirds(): void {
 
@@ -290,7 +263,6 @@ namespace Rodelhang {
         var gradient = crc2.createLinearGradient(0, 0, 0, 200);
         gradient.addColorStop(0, "#ECE9E6");
         gradient.addColorStop(0.5, "#FFFFFF");
-
 
         crc2.beginPath();
         crc2.moveTo(200, 50);
@@ -352,7 +324,6 @@ namespace Rodelhang {
         var gradient = crc2.createLinearGradient(0, 0, 0, 200);
         gradient.addColorStop(0, "#7474BF");
         gradient.addColorStop(0.5, "#348AC7");
-
 
         crc2.fillStyle = gradient;
 
@@ -478,7 +449,6 @@ namespace Rodelhang {
         crc2.closePath();
 
     }
-
 
     function drawSun(): void {
         var gradient = crc2.createLinearGradient(0, 0, 0, 200);

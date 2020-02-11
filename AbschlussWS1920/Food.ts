@@ -58,23 +58,21 @@ namespace Rodelhang {
         baitBirds(): void {
             this.target = new Vector(this.position.x, this.position.y);
             for (let bird of birdArray) {
-               
+
                 this.baitMinX = this.target.x - 150;
                 this.baitMaxX = this.target.x + 150;
                 this.baitMinY = this.target.y - 150;
-                this.baitMaxY = this.target.y + 150; 
-                
-                if ((this.baitMinX < bird.position.x && bird.position.x < this.baitMaxX) && (this.baitMinY < bird.position.y && bird.position.y < this.baitMaxY))
-                    {
-                        this.baitedBirds.push(bird);
+                this.baitMaxY = this.target.y + 150;
+
+                if ((this.baitMinX < bird.position.x && bird.position.x < this.baitMaxX) && (this.baitMinY < bird.position.y && bird.position.y < this.baitMaxY)) {
+                    this.baitedBirds.push(bird);
 
 
-                    }
+                }
             }
 
             for (let bird of this.baitedBirds) {
 
-               
                 console.log("foodpos" + this.target);
                 bird.velocity = Vector.getDifference(this.target, bird.position);
                 bird.velocity.scale(0.01 + Math.random() * 0.01);
@@ -82,7 +80,7 @@ namespace Rodelhang {
                 this.stopMaxX = this.target.x + 10;
                 this.stopMinY = this.target.y - 10;
                 this.stopMaxY = this.target.y + 10;
-               
+
 
             }
             console.log(this.baitedBirds);
@@ -95,9 +93,9 @@ namespace Rodelhang {
                     bird.velocity.y = 0;
                     setTimeout(function () {
                         foodArray = [];
-                        
-                        
-                        bird.setVelocity(); 
+
+
+                        bird.setVelocity();
                     }, 3000);
 
                 }
