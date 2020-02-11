@@ -99,7 +99,6 @@ namespace Rodelhang {
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
         document.getElementById("Restart").addEventListener("click", timer);
         document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
-        document.getElementById("submitButton").addEventListener("click", test);
         document.getElementById("submitButton").addEventListener("click", handleEnd);
         document.addEventListener("contextmenu", rightClick);
         document.getElementById("buttonHighscore").addEventListener("click", highscores);
@@ -109,11 +108,7 @@ namespace Rodelhang {
     }
 
 
-    function test(): void {
 
-        console.log(score);
-        console.log(document.getElementById("textInput").getAttribute("value"));
-    }
 
     function init(): void {
 
@@ -152,7 +147,7 @@ namespace Rodelhang {
     function timer(): void {
         console.log("timer start");
         setTimeout(end, 20000);
-      
+        
     }
 
     function end(): void { // Spiel fertig

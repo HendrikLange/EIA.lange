@@ -76,16 +76,11 @@ var Rodelhang;
         document.getElementById("Restart").addEventListener("click", anzeigeCanvas);
         document.getElementById("Restart").addEventListener("click", timer);
         document.getElementsByTagName("canvas")[0].addEventListener("click", mouseEvent);
-        document.getElementById("submitButton").addEventListener("click", test);
         document.getElementById("submitButton").addEventListener("click", handleEnd);
         document.addEventListener("contextmenu", rightClick);
         document.getElementById("buttonHighscore").addEventListener("click", highscores);
         document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);
         // document.addEventListener("contextmenu", rightClick);
-    }
-    function test() {
-        console.log(Rodelhang.score);
-        console.log(document.getElementById("textInput").getAttribute("value"));
     }
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
