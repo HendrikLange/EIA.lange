@@ -28,6 +28,8 @@ var Rodelhang;
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("nameIn").style.display = "none";
+        document.getElementById("playerName").style.display = "none";
+        document.getElementById("scores").style.display = "none";
     }
     function handleSendHS(_name, _score) {
         let query = "score=" + _score + "&name=" + _name;
@@ -63,7 +65,7 @@ var Rodelhang;
                 /* nameList.innerText =  nameList.innerHTML +   responseJSON[x].name + " <br /> ";
                 scorelist.innerText = scorelist.innerHTML +   responseJSON[x].score + " <br /> " ; */
                 let place = 1 + x;
-                scoreOutput += "<h4>" + place + ". " + responseJSON[x].name + " :" + responseJSON[x].score + " Punkte" + "<br>";
+                scoreOutput += "<h5>" + place + ". " + responseJSON[x].name + " :" + responseJSON[x].score + " Punkte" + "<br>";
             }
             nameList.innerHTML = scoreOutput;
         });
@@ -119,6 +121,8 @@ var Rodelhang;
         document.getElementsByTagName("canvas")[0].classList.add("invisible");
         document.getElementsByTagName("section")[0].classList.remove("invisible");
         document.getElementById("end").innerText = "Deine Punktzahl:" + " " + Rodelhang.score.toString();
+        document.getElementById("playerName").style.display = "block";
+        document.getElementById("scores").style.display = "block";
         setTimeout(handleRetriveHS, 100);
     }
     function update() {
