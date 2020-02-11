@@ -30,9 +30,11 @@ section{
 	
 }
 
-.Anleitung
+#rules
 {
-	
+	font-size: 15px;
+	margin-top: 10%;
+	font-family: 'Calibri', cursive;
 }
 
 button
