@@ -74,7 +74,7 @@ namespace Rodelhang {
         let scores: number[] = [];
 
         responseJSON.sort(function (a:any, b:any) {
-            return a.score - b.score;
+            return b.score - a.score;
         });
         let scoreOutput: string = "";
         for (let x: number = 0; x < 10; x++) {

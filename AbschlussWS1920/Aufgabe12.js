@@ -56,7 +56,7 @@ var Rodelhang;
             console.log(responseJSON.length);
             let scores = [];
             responseJSON.sort(function (a, b) {
-                return a.score - b.score;
+                return b.score - a.score;
             });
             let scoreOutput = "";
             for (let x = 0; x < 10; x++) {
