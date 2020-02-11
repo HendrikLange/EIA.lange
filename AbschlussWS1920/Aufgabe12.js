@@ -55,14 +55,17 @@ var Rodelhang;
             console.log("scoree");
             console.log(responseJSON.length);
             let scores = [];
-            let helpString = "";
+            responseJSON.sort(function (a, b) {
+                return a.score - b.score;
+            });
+            let scoreOutput = "";
             for (let x = 0; x < 10; x++) {
                 /* nameList.innerText =  nameList.innerHTML +   responseJSON[x].name + " <br /> ";
                 scorelist.innerText = scorelist.innerHTML +   responseJSON[x].score + " <br /> " ; */
                 let place = 1 + x;
-                helpString += "<h3>" + place + ". " + responseJSON[x].name + " | Score:" + responseJSON[x].score + "<br>";
+                scoreOutput += "<h4>" + place + ". " + responseJSON[x].name + " :" + responseJSON[x].score + " Punkte" + "<br>";
             }
-            nameList.innerHTML = helpString;
+            nameList.innerHTML = scoreOutput;
         });
     }
     function listeners() {

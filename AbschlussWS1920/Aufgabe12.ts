@@ -66,22 +66,26 @@ namespace Rodelhang {
 
         //  console.log(responseText)
         let nameList: HTMLElement = document.getElementById("names");
-       // let scorelist: HTMLElement = document.getElementById("highscores");
+        // let scorelist: HTMLElement = document.getElementById("highscores");
         let responseJSON = await response.json();
         console.log(responseJSON)
         console.log("scoree");
         console.log(responseJSON.length);
         let scores: number[] = [];
-        let helpString: string = "";
+
+        responseJSON.sort(function (a:any, b:any) {
+            return a.score - b.score;
+        });
+        let scoreOutput: string = "";
         for (let x: number = 0; x < 10; x++) {
             /* nameList.innerText =  nameList.innerHTML +   responseJSON[x].name + " <br /> ";
             scorelist.innerText = scorelist.innerHTML +   responseJSON[x].score + " <br /> " ; */
             let place: number = 1 + x;
-            helpString += "<h3>" + place + ". " + responseJSON[x].name + " | Score:" + responseJSON[x].score + "<br>";
+            scoreOutput += "<h4>" + place + ". " + responseJSON[x].name + " :" + responseJSON[x].score + " Punkte" + "<br>";
 
 
         }
-        nameList.innerHTML = helpString;
+        nameList.innerHTML = scoreOutput;
 
 
     }
