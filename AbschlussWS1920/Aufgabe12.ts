@@ -65,18 +65,25 @@ namespace Rodelhang {
         //let responseText: string = await response.text();
 
         //  console.log(responseText)
-        let nameList:HTMLElement = document.getElementById("names");
-        let scorelist:HTMLElement = document.getElementById("highscores");
+        let nameList: HTMLElement = document.getElementById("names");
+        let scorelist: HTMLElement = document.getElementById("highscores");
         let responseJSON = await response.json();
         console.log(responseJSON)
         console.log("scoree");
         console.log(responseJSON.length);
-        for (let x:number = 0; x < 10; x++) {
-            nameList.innerText =  nameList.innerHTML +   responseJSON[x].name + " <br /> ";
+        let scores: number[] = [];
+        let helpString: string = "";
+        for (let x: number = 0; x < 10; x++) {
+            /* nameList.innerText =  nameList.innerHTML +   responseJSON[x].name + " <br /> ";
+            scorelist.innerText = scorelist.innerHTML +   responseJSON[x].score + " <br /> " ; */
+            let place: number = 1 + x;
+            helpString += "<h3>" + place + ". " + responseJSON[x].name + " | Score:" + responseJSON[x].score + "<br>";
+
+
         }
-        for (let x:number = 0; x < 10; x++) {
-            scorelist.innerText = scorelist.innerHTML +   responseJSON[x].score + " <br /> " ;
-        }
+        nameList.innerHTML = helpString;
+
+
     }
 
     function listeners(): void {
