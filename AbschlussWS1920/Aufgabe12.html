@@ -12,9 +12,6 @@ EIA-2
 
 <head>
 	<meta charset="utf-8">
-	
-	<script src="Object.js" type="text/javascript" charset="utf-8"></script>
-
 	<script src="Snow.js" type="text/javascript" charset="utf-8"></script>
 	<script src="Ball.js" type="text/javascript" charset="utf-8"></script>
 
@@ -27,11 +24,7 @@ EIA-2
 	<script src="Food.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="Aufgabe12.css">
 
-
-
-
-
-	<title>Rodelhang</title>
+	<title>Vogelhaus Terminator</title>
 </head>
 
 <body oncontextmenu="return false"></body>
@@ -42,13 +35,13 @@ EIA-2
 <div>
 	<h1>Vogelhaus Terminator</h1>
 
-	<button  id="Start">START</button>
+	<button id="Start">START</button>
 	<button id="buttonHighscore">Highscores</button>
 	<p id="rules">
-	 <p class="rules"> Terminiere so viele Vögel wie möglich! Du hast 20 Sekunden Zeit!    </p>
-	 <p class="rules"> Linksklick: Schneeball  </p>
-	 <p class="rules"> Rechtsklick: Futter streuen</p>
-</p>
+		<p class="rules"> Terminiere so viele Vögel wie möglich! Du hast 20 Sekunden Zeit! </p>
+		<p class="rules"> Linksklick: Schneeball </p>
+		<p class="rules"> Rechtsklick: Futter streuen</p>
+	</p>
 </div>
 
 <canvas class="invisible" width=500 height=700></canvas>
@@ -62,20 +55,21 @@ EIA-2
 		</div>
 
 	</div>
-		<form>
-			
-			<fieldset id="nameIn">
+	<form>
 
-				<input name="text" id="textInput" value="Hier deinen Namen eingeben" ></input>
-				<button type="submit" id="submitButton">Absenden</button>
-			</fieldset>
+		<fieldset id="nameIn">
 
-			<p> <h4>Highscore </h4>
-			<div id="scores"> 	</div>
+			<input name="text" id="textInput" value="Hier deinen Namen eingeben"></input>
+			<button type="submit" id="submitButton">Absenden</button>
+		</fieldset>
+
+		<p>
+			<h4>Highscore </h4>
+			<div id="scores"> </div>
 			<div id="names"> Name </div>
-		
-			</p>
-		</form>
+
+		</p>
+	</form>
 
 
 

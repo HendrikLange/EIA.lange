@@ -68,9 +68,9 @@ namespace Rodelhang {
         console.log(responseJSON)
         console.log("scoree");
         console.log(responseJSON.length);
-       
 
-        responseJSON.sort(function (a:any, b:any) {
+
+        responseJSON.sort(function (a: any, b: any) {
             return b.score - a.score;
         });
         let scoreOutput: string = "";
@@ -95,7 +95,7 @@ namespace Rodelhang {
         document.addEventListener("contextmenu", rightClick);
         document.getElementById("buttonHighscore").addEventListener("click", highscores);
         document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);
-        // document.addEventListener("contextmenu", rightClick);
+
 
     }
 
@@ -104,8 +104,7 @@ namespace Rodelhang {
 
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        /* let nameinput: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
-        name = nameinput.value; */
+
         listeners();
         drawSky();
         drawHill();
@@ -123,7 +122,7 @@ namespace Rodelhang {
     }
 
 
-    function anzeigeCanvas() {
+    function anzeigeCanvas(): void {
         document.getElementsByTagName("canvas")[0].classList.remove("invisible");
         document.getElementsByTagName("div")[0].classList.add("invisible");
         document.getElementById("nameIn").style.display = "block";
@@ -132,7 +131,7 @@ namespace Rodelhang {
     function timer(): void {
         console.log("timer start");
         setTimeout(end, 20000);
-        
+
     }
 
     function end(): void { // Spiel fertig
@@ -270,7 +269,7 @@ namespace Rodelhang {
         crc2.arc(210, 50, 12, 0, 2 * Math.PI);
         crc2.arc(187, 50, 12, 0, 2 * Math.PI);
         crc2.arc(200, 45, 12, 0, 2 * Math.PI);
-        crc2.fillStyle = gradient
+        crc2.fillStyle = gradient;
         crc2.fill();
         crc2.closePath();
 

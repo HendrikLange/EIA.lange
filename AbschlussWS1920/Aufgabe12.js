@@ -78,13 +78,10 @@ var Rodelhang;
         document.addEventListener("contextmenu", rightClick);
         document.getElementById("buttonHighscore").addEventListener("click", highscores);
         document.getElementById("buttonHighscore").addEventListener("click", handleRetriveHS);
-        // document.addEventListener("contextmenu", rightClick);
     }
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         Rodelhang.crc2 = canvas.getContext("2d");
-        /* let nameinput: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
-        name = nameinput.value; */
         listeners();
         drawSky();
         drawHill();
