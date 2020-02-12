@@ -43,7 +43,7 @@ var Rodelhang;
             for (let bird of this.baitedBirds) {
                 console.log("foodpos" + this.target);
                 bird.velocity = Rodelhang.Vector.getDifference(this.target, bird.position);
-                bird.velocity.scale(0.05 + Math.random() * 0.09);
+                bird.velocity.scale(0.02 + Math.random() * 0.01);
                 this.stopMinX = this.target.x - 10;
                 this.stopMaxX = this.target.x + 10;
                 this.stopMinY = this.target.y - 10;
