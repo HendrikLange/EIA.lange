@@ -1,15 +1,10 @@
 namespace Rodelhang {
 
-    export interface Vector {
-        x: number;
-        y: number;
-    }
 
     window.addEventListener("load", init);
 
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-    export let birdHousePolePosition: Vector;
     let treeArray: Tree[] = [];
     export let birdArray: Bird[] = [];
     export let foodArray: Food[] = [];
